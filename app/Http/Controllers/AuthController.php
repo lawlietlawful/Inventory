@@ -65,8 +65,8 @@ class AuthController extends Controller
             Auth::user()->update(['last_login_at' => now()]);
 
             $isInventory = method_exists(Auth::user(), 'isInventoryUser') && Auth::user()->isInventoryUser();
-            $targetRoute = $isInventory ? route('inventory.dashboard') : route('pos');
-            $deptLabel = $isInventory ? 'Inventory Management System' : 'Canteen POS';
+            $targetRoute = route('inventory.dashboard');
+            $deptLabel = $isInventory ? 'Inventory Management System (Warehouse)' : 'Inventory System (Viewer Mode)';
 
             return redirect()->intended($targetRoute)
                 ->with('success', "Welcome to {$deptLabel}, " . Auth::user()->name . "!");
@@ -94,7 +94,7 @@ class AuthController extends Controller
             session(['auth_system' => 'canteen']);
             Auth::login($canteen);
             $request->session()->regenerate();
-            return redirect()->route('pos')->with('success', "Active session: {$canteen->name} (Canteen POS)");
+            return redirect()->route('inventory.dashboard')->with('info', "Logged in as {$canteen->name} (Canteen Staff). Point of Sale terminal is at http://127.0.0.1:8000.");
         }
 
         // Check Inventory Users
