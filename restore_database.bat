@@ -1,9 +1,9 @@
 @echo off
-title Canteen POS - Database Restore Tool
-color 0a
+title Inventory System - Database Restore Tool
+color 0b
 
 echo ==============================================================
-echo       CANTEEN MANAGEMENT SYSTEM - DATABASE RESTORE TOOL
+echo       INVENTORY SYSTEM (Group 2) - DATABASE RESTORE TOOL
 echo ==============================================================
 echo.
 echo This script will import the centralized database into PostgreSQL.
@@ -19,7 +19,8 @@ if "%DB_PORT%"=="" set DB_PORT=5433
 set /p DB_USER="Enter PostgreSQL Username [default: postgres]: " || set DB_USER=postgres
 if "%DB_USER%"=="" set DB_USER=postgres
 
-set /p PGPASSWORD="Enter PostgreSQL Password: "
+set /p PGPASSWORD="Enter PostgreSQL Password [default: qwerty123]: " || set PGPASSWORD=qwerty123
+if "%PGPASSWORD%"=="" set PGPASSWORD=qwerty123
 
 echo.
 echo [1/2] Creating database 'final_database' (if not exists)...
@@ -30,7 +31,7 @@ psql -h %DB_HOST% -p %DB_PORT% -U %DB_USER% -d final_database -f "%~dp0database_
 
 echo.
 echo ==============================================================
-echo   Restore complete! You can now start the application.
+echo   Restore complete! You can now run start_server.bat
 echo ==============================================================
 set PGPASSWORD=
 pause
