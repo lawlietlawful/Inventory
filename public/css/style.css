@@ -1,0 +1,579 @@
+/* ==========================================================================
+   CANTEEN DAWN - EXECUTIVE MINIMALIST DESIGN SYSTEM
+   Clean, premium, modern aesthetics for school canteen & POS operations.
+   ========================================================================== */
+
+:root {
+    --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+
+    /* Theme Palette */
+    --slate-950: #020617;
+    --slate-900: #0f172a;
+    --slate-800: #1e293b;
+    --slate-700: #334155;
+    --slate-600: #475569;
+    --slate-500: #64748b;
+    --slate-400: #94a3b8;
+    --slate-300: #cbd5e1;
+    --slate-200: #e2e8f0;
+    --slate-100: #f1f5f9;
+    --slate-50:  #f8fafc;
+    --white:     #ffffff;
+
+    /* Semantic Accents */
+    --primary:        #0f172a;
+    --primary-hover:  #1e293b;
+    --emerald:        #059669;
+    --emerald-subtle: #ecfdf5;
+    --amber:          #d97706;
+    --amber-subtle:   #fffbeb;
+    --rose:           #e11d48;
+    --rose-subtle:    #fff1f2;
+
+    /* Surfaces */
+    --bg-body:        #f8fafc;
+    --surface-card:   #ffffff;
+    --border-card:    #e2e8f0;
+    --shadow-sm:      0 1px 2px 0 rgba(15, 23, 42, 0.05);
+    --shadow-md:      0 4px 6px -1px rgba(15, 23, 42, 0.06), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+    --shadow-lg:      0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+}
+
+/* ==========================================================================
+   BASE & TYPOGRAPHY
+   ========================================================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-body);
+    color: var(--slate-800);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: var(--slate-900);
+    letter-spacing: -0.02em;
+}
+
+.tabular-nums {
+    font-variant-numeric: tabular-nums;
+}
+
+.tracking-wide-caps {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--slate-500);
+}
+
+/* ==========================================================================
+   NAVIGATION BAR (EXECUTIVE OBSIDIAN)
+   ========================================================================== */
+.main-navbar {
+    background-color: var(--slate-900) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding-top: 0.65rem;
+    padding-bottom: 0.65rem;
+}
+
+.main-navbar .navbar-brand {
+    color: var(--white);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-size: 1.05rem;
+}
+
+.brand-mark {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+
+.main-navbar .nav-link {
+    color: #94a3b8;
+    border-radius: 6px;
+    padding: 0.42rem 0.8rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.main-navbar .nav-link:hover,
+.main-navbar .nav-link:focus {
+    color: var(--white);
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.main-navbar .nav-link.active {
+    color: var(--white) !important;
+    background-color: var(--slate-800) !important;
+    font-weight: 600;
+}
+
+.cashier-badge {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 0.35rem 0.75rem;
+    color: #e2e8f0;
+}
+
+.btn-navbar-logout {
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: transparent;
+    color: #cbd5e1;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 0.35rem 0.75rem;
+    transition: all 0.15s ease;
+}
+
+.btn-navbar-logout:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ==========================================================================
+   CARDS & CONTAINERS
+   ========================================================================== */
+.card {
+    background-color: var(--surface-card);
+    border: 1px solid var(--border-card);
+    border-radius: 10px;
+    box-shadow: var(--shadow-sm);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card-header {
+    background-color: var(--surface-card);
+    border-bottom: 1px solid var(--slate-100);
+    padding: 0.9rem 1.25rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--slate-900);
+}
+
+/* Minimalist KPI Metric Card */
+.metric-card {
+    padding: 1.25rem 1.25rem;
+    background-color: var(--surface-card);
+    border: 1px solid var(--border-card);
+    border-radius: 10px;
+    height: 100%;
+    box-shadow: var(--shadow-sm);
+}
+
+.metric-card .metric-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--slate-500);
+    margin-bottom: 0.35rem;
+}
+
+.metric-card .metric-value {
+    font-size: 1.85rem;
+    font-weight: 700;
+    color: var(--slate-900);
+    line-height: 1.15;
+    font-variant-numeric: tabular-nums;
+}
+
+.metric-card .metric-sub {
+    font-size: 0.78rem;
+    color: var(--slate-400);
+    margin-top: 0.35rem;
+}
+
+/* ==========================================================================
+   BUTTONS (PREMIUM MODERN)
+   ========================================================================== */
+.btn {
+    border-radius: 7px;
+    font-weight: 500;
+    font-size: 0.88rem;
+    padding: 0.5rem 0.95rem;
+    transition: all 0.15s ease;
+}
+
+.btn-primary {
+    background-color: var(--slate-900);
+    border-color: var(--slate-900);
+    color: var(--white);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--slate-800);
+    border-color: var(--slate-800);
+    color: var(--white);
+}
+
+.btn-outline-primary {
+    border-color: var(--slate-300);
+    color: var(--slate-800);
+    background-color: var(--white);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--slate-50);
+    border-color: var(--slate-400);
+    color: var(--slate-900);
+}
+
+.btn-success {
+    background-color: var(--emerald);
+    border-color: var(--emerald);
+    color: var(--white);
+}
+
+.btn-success:hover,
+.btn-success:focus {
+    background-color: #047857;
+    border-color: #047857;
+}
+
+.btn-touch {
+    padding: 0.85rem 1.25rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border-radius: 9px;
+}
+
+/* ==========================================================================
+   FORM CONTROLS
+   ========================================================================== */
+.form-control, .form-select {
+    border-radius: 7px;
+    border-color: var(--slate-300);
+    font-size: 0.9rem;
+    padding: 0.5rem 0.85rem;
+    color: var(--slate-800);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--slate-800);
+    box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.08);
+}
+
+/* ==========================================================================
+   TABLES (CLEAN EDITORIAL)
+   ========================================================================== */
+.table {
+    --bs-table-bg: transparent;
+    color: var(--slate-800);
+    font-size: 0.88rem;
+    margin-bottom: 0;
+}
+
+.table th {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--slate-500);
+    background-color: var(--slate-50);
+    border-bottom: 1px solid var(--border-card);
+    padding: 0.65rem 1rem;
+    white-space: nowrap;
+}
+
+.table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--slate-100);
+    vertical-align: middle;
+}
+
+.table-hover tbody tr:hover td {
+    background-color: var(--slate-50);
+}
+
+/* ==========================================================================
+   BADGES (MINIMALIST PILLS)
+   ========================================================================== */
+.badge {
+    font-weight: 500;
+    border-radius: 6px;
+    padding: 0.35rem 0.55rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.01em;
+}
+
+.badge-neutral {
+    background-color: var(--slate-100);
+    color: var(--slate-700);
+    border: 1px solid var(--slate-200);
+}
+
+.badge-success-subtle {
+    background-color: var(--emerald-subtle);
+    color: var(--emerald);
+    border: 1px solid rgba(5, 150, 105, 0.2);
+}
+
+.badge-warning-subtle {
+    background-color: var(--amber-subtle);
+    color: var(--amber);
+    border: 1px solid rgba(217, 119, 6, 0.2);
+}
+
+.badge-danger-subtle {
+    background-color: var(--rose-subtle);
+    color: var(--rose);
+    border: 1px solid rgba(225, 29, 72, 0.2);
+}
+
+/* ==========================================================================
+   POS TERMINAL SCREEN SPECIFICS
+   ========================================================================== */
+.pos-container {
+    height: calc(100vh - 110px);
+    min-height: 600px;
+}
+
+.product-scroll-area {
+    overflow-y: auto;
+    max-height: calc(100vh - 215px);
+    padding-right: 4px;
+}
+
+.product-scroll-area::-webkit-scrollbar,
+.cart-scroll-area::-webkit-scrollbar {
+    width: 5px;
+}
+
+.product-scroll-area::-webkit-scrollbar-thumb,
+.cart-scroll-area::-webkit-scrollbar-thumb {
+    background: var(--slate-300);
+    border-radius: 4px;
+}
+
+/* Category Filter Pills */
+.category-pills .nav-link {
+    border-radius: 7px;
+    padding: 0.42rem 0.9rem;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: var(--slate-600);
+    background-color: var(--white);
+    border: 1px solid var(--slate-200);
+    margin-right: 0.4rem;
+    margin-bottom: 0.4rem;
+    transition: all 0.15s ease;
+}
+
+.category-pills .nav-link:hover {
+    background-color: var(--slate-100);
+    border-color: var(--slate-300);
+    color: var(--slate-900);
+}
+
+.category-pills .nav-link.active {
+    background-color: var(--slate-900) !important;
+    color: var(--white) !important;
+    border-color: var(--slate-900) !important;
+}
+
+/* Product Card */
+.product-card {
+    cursor: pointer;
+    border-radius: 9px;
+    border: 1px solid var(--border-card);
+    background-color: var(--white);
+    padding: 0.85rem;
+    transition: all 0.18s ease;
+    user-select: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-card:hover:not(.disabled) {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--slate-400);
+}
+
+.product-card:active:not(.disabled) {
+    transform: scale(0.98);
+}
+
+.product-card.disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+    background-color: var(--slate-50);
+    border-color: var(--slate-200);
+}
+
+.product-card-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--slate-900);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Cart Panel */
+.cart-panel {
+    border-radius: 10px;
+    background-color: var(--white);
+    border: 1px solid var(--border-card);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 110px);
+}
+
+.cart-scroll-area {
+    overflow-y: auto;
+    flex-grow: 1;
+    padding: 0.75rem 1rem;
+}
+
+.cart-item {
+    border-bottom: 1px solid var(--slate-100);
+    padding: 0.65rem 0;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.qty-btn {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    border: 1px solid var(--slate-300);
+    background: var(--white);
+    color: var(--slate-700);
+    font-size: 0.85rem;
+}
+
+.qty-btn:hover {
+    background: var(--slate-100);
+    color: var(--slate-900);
+}
+
+.qty-input {
+    width: 44px;
+    height: 28px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.85rem;
+    border: 1px solid var(--slate-300);
+    border-radius: 6px;
+    padding: 0.1rem;
+}
+
+.quick-cash-btn {
+    border-radius: 6px;
+    font-weight: 600;
+    padding: 0.35rem 0.55rem;
+    font-size: 0.82rem;
+    border: 1px solid var(--slate-200);
+    background: var(--white);
+    color: var(--slate-700);
+}
+
+.quick-cash-btn:hover {
+    background: var(--slate-100);
+    border-color: var(--slate-300);
+    color: var(--slate-900);
+}
+
+.cart-summary {
+    background-color: var(--slate-50);
+    border-top: 1px solid var(--border-card);
+    padding: 1rem 1.25rem;
+}
+
+.grand-total-display {
+    font-size: 1.85rem;
+    font-weight: 800;
+    color: var(--slate-900);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   PRINTABLE THERMAL RECEIPT
+   ========================================================================== */
+.receipt-wrapper {
+    max-width: 400px;
+    margin: 1.5rem auto;
+    background: var(--white);
+    padding: 1.75rem 1.25rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-card);
+    font-family: var(--font-mono);
+}
+
+.receipt-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: var(--slate-900);
+}
+
+.receipt-divider {
+    border-top: 1px dashed var(--slate-400);
+    margin: 0.65rem 0;
+}
+
+.receipt-table th,
+.receipt-table td {
+    padding: 0.3rem 0;
+}
+
+@media print {
+    body {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .main-navbar,
+    .footer,
+    .no-print,
+    .btn,
+    .flash-container {
+        display: none !important;
+    }
+
+    .receipt-wrapper {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 auto !important;
+        max-width: 100% !important;
+        width: 80mm !important;
+    }
+
+    @page {
+        margin: 4mm;
+        size: 80mm auto;
+    }
+}

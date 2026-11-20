@@ -1,7 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <rect width="64" height="64" rx="14" fill="#0f172a"/>
-  <rect x="0.5" y="0.5" width="63" height="63" rx="13.5" stroke="#334155" stroke-width="1"/>
-  <path d="M32 14L49 23.5V41.5L32 51L15 41.5V23.5L32 14Z" stroke="#38bdf8" stroke-width="2.5" stroke-linejoin="round" fill="#1e293b"/>
-  <path d="M32 14V32.5M32 32.5L49 23.5M32 32.5L15 23.5M32 32.5V51" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="32" cy="32.5" r="2.5" fill="#38bdf8"/>
+    <rect width="64" height="64" rx="16" fill="#0f172a"/>
+    <!-- Stylized minimalist C monogram with canteen accent -->
+    <path d="M42 22C39.5 19.5 36 18 32 18C24.268 18 18 24.268 18 32C18 39.732 24.268 46 32 46C36 46 39.5 44.5 42 42" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>
+    <circle cx="33" cy="32" r="3.5" fill="#38bdf8"/>
+    <line x1="33" y1="25" x2="33" y2="28" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
 </svg>
+

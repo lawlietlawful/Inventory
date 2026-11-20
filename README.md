@@ -1,230 +1,223 @@
-# Integrated Inventory Management System (IMS)
-### Centralized Enterprise Hub with Canteen Management System & Employee Management System Integrations Using PostgreSQL
+# 🍽️ Canteen Management System (POS)
+
+An enterprise-grade, school-compliant Point of Sale (POS) and Canteen Management System built with **Laravel 11**, **PostgreSQL 18**, **Livewire 3**, **Bootstrap 5.3 CDN**, and **Chart.js CDN**. Designed with an executive minimalist interface, robust database concurrency protection, and seamless multi-schema integration.
 
 ---
 
-## 1. Project Overview
+## 📌 System Highlights & Technical Features
 
-The **Integrated Inventory Management System (IMS)** is a modern, enterprise-grade platform developed to serve as the single source of truth for inventory control, catalog management, batch tracking, procurement, and valuation.
-
-The system connects three critical operations through a centralized **PostgreSQL** database:
-1. **Central Inventory Core**: Products, categories, units, suppliers, purchase orders, stock-in receiving, stock-out dispatches, physical adjustments, transfers, and FEFO expiration batch monitoring.
-2. **Canteen Management System (CMS / POS)**: Real-time cashier checkout, automatic Bill of Materials (BOM) recipe-based ingredient deductions (e.g., *Iced Coffee* $\rightarrow$ cup, lid, coffee portion, milk portion, syrup), idempotent event processing to prevent duplicate deductions, real-time product availability indicators, and returns/refunds.
-3. **Employee Management System (EMS)**: Reference-based employee identity management linking every purchase order, receipt, stock adjustment, and cashier sale to a responsible employee; account status synchronization that immediately locks out inactive employees from restricted operations.
+- **Multi-Schema Database Architecture:**
+  - Integrates seamlessly with a shared student authentication table (`app1.users`) without running migrations or modifying table definitions.
+  - Canteen operations are strictly isolated within the `canteen_pos` PostgreSQL schema.
+- **Transactional Concurrency & Data Integrity:**
+  - Pessimistic row-locking (`lockForUpdate()`) during checkout to prevent inventory race conditions or negative stock overselling.
+  - Complete multi-step checkout (`orders`, `order_items`, `payments`, stock deduction) encapsulated in a single atomic `DB::transaction()`.
+  - Database-level generated column compliance: PostgreSQL handles `order_items.line_total` generated column without framework interference.
+- **Interactive Livewire 3 Point of Sale:**
+  - Instant live cart reactivity with zero full-page reloads.
+  - Dual payment channels (Cash with live change calculation and GCash with dynamic scan QR modal).
+  - Cashier keyboard shortcuts (`F2` search, `F4` payment toggle, `Enter` checkout, `Esc` dismiss).
+  - Audio feedback using Web Audio API synthesis (beep on item scan, chime on checkout).
+  - 80mm thermal receipt iframe printing with instant verification QR code.
+- **Order Cancellation & Stock Restoration:**
+  - Complete order voiding workflow with stock quantities restored back into inventory atomically.
+  - Automatic re-enablement of product availability when stock is replenished.
+- **Executive Minimalist UI:**
+  - Bespoke obsidian slate palette (`#0f172a`), Plus Jakarta Sans and Inter typography, tabular financial figures (`tabular-nums`), and custom vector SVG brand marks.
 
 ---
 
-## 2. System Architecture
+## 🛠️ Technology Stack
+
+| Layer | Technology | Details |
+| :--- | :--- | :--- |
+| **Backend Framework** | Laravel 11.x | PHP 8.2+ / PHP 8.4 compatible |
+| **Database** | PostgreSQL 18 | Multi-schema (`app1` and `canteen_pos`) |
+| **Reactive POS** | Livewire 3 | Real-time frontend state synchronization |
+| **CSS / UI Styling** | Bootstrap 5.3 CDN | Custom obsidian minimalist design system |
+| **Icons** | Bootstrap Icons CDN | Refined hairline vector icons & custom SVG favicon |
+| **Data Visualization** | Chart.js CDN | Weekly sales trend & Cash vs GCash revenue doughnut |
+| **Currency & Timezone**| Philippine Peso (₱) | Timezone set to `Asia/Manila` |
+
+---
+
+## 🗄️ Database Schema & Architecture
 
 ```
-+---------------------------------------------------------------------------------------------------+
-|                                          CLIENT LAYER                                             |
-|  [Enterprise Admin Dashboard]   [Inventory Staff / Manager UI]   [Interactive Canteen POS Terminal] |
-+---------------------------------------------------------------------------------------------------+
-                                                  | RESTful APIs
-+---------------------------------------------------------------------------------------------------+
-|                                      APPLICATION GATEWAY (Node.js)                                |
-|  - Role-Based Access Control (RBAC Middleware)                                                    |
-|  - Idempotency & Event Bus (integration_events)                                                   |
-|  - Bill of Materials Recipe Deduction Engine                                                      |
-|  - First-Expired, First-Out (FEFO) Batch Allocator                                                |
-|  - Weighted Average Cost (WAC) Valuation Engine                                                    |
-|  - Comprehensive Activity Audit Logger                                                            |
-+---------------------------------------------------------------------------------------------------+
-                                                  |
-+---------------------------------------------------------------------------------------------------+
-|                               CENTRAL POSTGRESQL DATABASE (23 TABLES)                             |
-|  integrated_management_db                                                                         |
-|  - Users & Roles: users, roles, permissions, role_permissions, departments                        |
-|  - Product Catalog: categories, units, products                                                   |
-|  - Inventory & Batches: stock_batches, inventory_transactions, stock_adjustments                   |
-|  - Recipe & BOM: product_recipes, product_recipe_items                                            |
-|  - Procurement: suppliers, supplier_products, purchase_orders, purchase_order_items               |
-|  - Logistics & Auditing: stock_transfers, stock_transfer_items, integration_events,               |
-|                         inventory_notifications, activity_logs, system_settings                    |
-+---------------------------------------------------------------------------------------------------+
+                    +------------------------------------+
+                    |            app1.users              |
+                    | (Shared Auth - Never Alter Table)  |
+                    +------------------------------------+
+                    | PK idno (VARCHAR)                  |
+                    |    username (VARCHAR)              |
+                    |    pwd (VARCHAR - bcrypt)          |
+                    |    name (VARCHAR)                  |
+                    +-----------------+------------------+
+                                      | 1
+                                      |
+                                      | M
++---------------------------+       +------------------------------------+
+|   canteen_pos.categories  |       |         canteen_pos.orders         |
++---------------------------+       +------------------------------------+
+| PK category_id (SERIAL)   |       | PK order_id (SERIAL)               |
+|    category_name (VARCHAR)|       | FK idno -> app1.users(idno)        |
++-------------+-------------+       |    customer_name (VARCHAR)         |
+              | 1                   |    order_date (TIMESTAMP)          |
+              |                     |    status ('pending','paid','canc')|
+              | M                   |    total_amount (NUMERIC 10,2)     |
++-------------+-------------+       +-------+--------------------+-------+
+|    canteen_pos.products   |               | 1                  | 1
++---------------------------+               |                    |
+| PK product_id (SERIAL)    |               |                    |
+| FK category_id            |               | M                  | 1
+|    product_name (VARCHAR) |       +-------+-------------+  +---+----------------+
+|    price (NUMERIC 10,2)   |<------+ canteen_pos.        |  |  canteen_pos.      |
+|    stock_qty (INTEGER)    |       |      order_items    |  |     payments       |
+|    is_available (BOOLEAN) |       +---------------------+  +--------------------+
++---------------------------+       | PK order_item_id    |  | PK payment_id      |
+                                    | FK order_id         |  | FK order_id (UQ)   |
+                                    | FK product_id       |  |    payment_method  |
+                                    |    quantity (INT)   |  |    amount_paid     |
+                                    |    unit_price       |  |    change_amount   |
+                                    |    line_total (GEN) |  |    paid_at         |
+                                    +---------------------+  +--------------------+
 ```
 
----
-
-## 3. Database Architecture (23 Relational Tables)
-
-The system utilizes PostgreSQL with strict referential integrity, foreign keys, row-level locking for concurrency protection, check constraints, and performance indexes.
-
-### Table Summary:
-1. `users` – Synchronized user accounts with `employee_id`, bcrypt password hashes, and `account_status`.
-2. `roles` – Administrator, Inventory Manager, Inventory Staff, Canteen Cashier, Employee.
-3. `permissions` – Granular functional privileges (14 defined permissions).
-4. `role_permissions` – Many-to-many relationship mapping roles to permissions.
-5. `categories` – Product classifications (Beverages, Food Products, Ingredients, Snacks, Packaging, etc.).
-6. `units` – Measurement units (pcs, kg, g, L, ml, packs, boxes, cans, rolls).
-7. `products` – Master product records with cost price (WAC), selling price, stock levels, barcodes, and recipe flags.
-8. `suppliers` – Vendor directory with contact information and performance history.
-9. `supplier_products` – Vendor catalog mapping with purchase prices and lead times.
-10. `purchase_orders` – Procurement lifecycle (`DRAFT`, `PENDING APPROVAL`, `APPROVED`, `ORDERED`, `PARTIALLY RECEIVED`, `COMPLETED`, `REJECTED`, `CANCELED`).
-11. `purchase_order_items` – Line items with ordered quantities, received quantities, and unit costs.
-12. `stock_batches` – Perishable inventory batches with batch numbers, remaining quantities, and expiration dates.
-13. `inventory_transactions` – Immutable ledger of all movements (`STOCK_IN`, `STOCK_OUT`, `SALE`, `RETURN`, `DAMAGE`, `EXPIRED`, `ADJUSTMENT`).
-14. `stock_adjustments` – Physical reconciliation discrepancy requests with dual-approval workflow.
-15. `product_recipes` – Finished product recipes.
-16. `product_recipe_items` – Bill of Materials (BOM) specifying required ingredient products, quantities, and units.
-17. `departments` – Enterprise organizational units (referenced by EMS).
-18. `stock_transfers` – Inter-location stock transfers.
-19. `stock_transfer_items` – Items transferred between storage locations.
-20. `inventory_notifications` – System alerts (low stock, out of stock, expiring batches, pending PO approvals).
-21. `activity_logs` – Detailed audit logs capturing employee ID, module, action, description, and IP address.
-22. `integration_events` – Event bus table for idempotent POS transactions and external sync payloads.
-23. `system_settings` – Operational parameters (WAC valuation, FEFO enforcement, negative stock prevention).
-
-### PostgreSQL Views Included:
-- `v_canteen_product_availability`: Real-time stock availability status (`AVAILABLE`, `LOW_STOCK`, `OUT_OF_STOCK`) consumed by POS.
-- `v_inventory_valuation`: Weighted Average Cost valuation per product and total inventory value.
-- `v_expiring_batches`: Batches sorted by expiration risk (`EXPIRED`, `CRITICAL_3_DAYS`, `WARNING_7_DAYS`, `ATTENTION_15_DAYS`, `NOTICE_30_DAYS`, `FRESH`).
+### PostgreSQL Generated Column
+`order_items.line_total` is defined as:
+```sql
+line_total NUMERIC(10, 2) GENERATED ALWAYS AS ((quantity::NUMERIC) * unit_price) STORED
+```
+The application strictly excludes `line_total` from `$fillable` attributes in Eloquent models, guaranteeing database integrity.
 
 ---
 
-## 4. Key Subsystem Integrations
+## 🚀 Installation & Setup Guide
 
-### A. Canteen Management System (POS) Integration
-- **Endpoint**: `POST /api/integration/canteen/sales`
-- **Recipe & BOM Deduction**:
-  When a finished product (e.g. *Signature Iced Coffee*) is purchased:
-  1. The integration engine queries `product_recipes` and `product_recipe_items`.
-  2. Resolves ingredients: 1 Cup (16oz), 1 Dome Lid, 50ml Espresso Concentrate, 150ml Fresh Milk, 20ml Simple Syrup.
-  3. Deducts required quantities $\times$ sale quantity from each ingredient's inventory row.
-  4. Deducts from batches using **First-Expired, First-Out (FEFO)** to prevent perishable waste.
-- **Direct Items**: Non-recipe items (e.g. *Bottled Mineral Water 500ml*) are deducted directly.
-- **Idempotency Protection**: Every sale requires an `idempotency_key` or `transaction_id`. Retrying or resending the exact same request will return the previous success response without deducting stock a second time.
-- **Concurrency & Atomicity**: Database transactions with row-level locks prevent race conditions and overselling.
-- **Cancellations & Refunds**:
-  - `POST /api/integration/canteen/cancel`: Reverses sale and returns stock to inventory.
-  - `POST /api/integration/canteen/refund`: Restores inventory only when physical restock is verified (`restock_inventory: true`).
+### 1. Prerequisites
+- **PHP 8.2** or higher (with `pdo_pgsql`, `pgsql`, `mbstring`, `openssl`, `bcmath` extensions enabled).
+- **Composer** (PHP package manager).
+- **PostgreSQL 15+** (tested up to PostgreSQL 18) running on port `5433` (or configured port).
 
-### B. Employee Management System (EMS) Integration
-- **Endpoint**: `POST /api/integration/employees/sync`
-- Synchronizes employee name, department, role, and account status (`ACTIVE`, `INACTIVE`, `SUSPENDED`).
-- **Inactive Account Enforcement**: If an employee is marked `INACTIVE` in EMS, their account status is updated and all future system actions (PO creation, approvals, receiving, adjustments) are rejected immediately.
-- **Audit Accountability**: Every inventory movement, stock-in, stock-out, and adjustment references `employee_id` for accountability.
-
----
-
-## 5. Technology Stack
-
-- **Database**: PostgreSQL 14+ (`integrated_management_db`) with dual-mode connection support (Live PostgreSQL + automated in-memory relational engine conforming strictly to the PostgreSQL schema).
-- **Backend**: Node.js v26 / Express.js RESTful API, `pg` connection pool, bcryptjs password hashing.
-- **Frontend**: Responsive Single-Page Application (HTML5, modern CSS3 with enterprise dashboard themes, vanilla JavaScript ES6, Chart.js for real-time analytics).
-- **Testing**: Automated Integration Test Suite (`tests/integration.test.js`).
-
----
-
-## 6. Installation and Execution
-
-### Step 1: Install Dependencies
+### 2. Clone / Open Repository
 ```bash
-npm install
+cd "canteen_pos"
 ```
 
-### Step 2: Configure Environment
-Copy `.env.example` to `.env` and configure your PostgreSQL database credentials:
+### 3. Environment Configuration
+Copy `.env.example` to `.env`:
 ```bash
-# Windows PowerShell
-Copy-Item .env.example .env
+cp .env.example .env
 ```
-Default connection parameters:
-```env
-PORT=3000
-PGHOST=127.0.0.1
-PGPORT=5432
-PGUSER=postgres
-PGPASSWORD=postgres
-PGDATABASE=integrated_management_db
+Ensure database credentials match your local PostgreSQL server:
+```ini
+DB_CONNECTION=pgsql
+DB_HOST=127.0.0.1
+DB_PORT=5433
+DB_DATABASE=canteen_pos
+DB_USERNAME=postgres
+DB_PASSWORD=your_postgres_password
+
+# Keep file-based session and cache (prevents migration tables)
+SESSION_DRIVER=file
+CACHE_STORE=file
+QUEUE_CONNECTION=sync
+APP_TIMEZONE=Asia/Manila
 ```
 
-### Step 3: Run Database Migrations & Seeds
-Execute the automated migration runner to apply `database/schema.sql` and `database/seed.sql`:
+### 4. Database Initialization (Standalone SQL)
+If setting up a fresh database, execute [`database_schema_and_seed.sql`](database_schema_and_seed.sql) inside PostgreSQL:
 ```bash
-node database/init.js
+psql -h 127.0.0.1 -p 5433 -U postgres -d canteen_pos -f database_schema_and_seed.sql
 ```
-*(If PostgreSQL is currently offline, the runner automatically initializes the local PostgreSQL-compliant storage engine, enabling full functionality immediately).*
+*(Do NOT run `php artisan migrate`, as the database is pre-structured and avoids polluting the shared PostgreSQL schema).*
 
-### Step 4: Run the Automated Test Suite
-Verify that all 7 core subsystems pass:
+### 5. Install Dependencies & Generate App Key
 ```bash
-node tests/integration.test.js
-```
-Expected output:
-```
-====================================================
-   INTEGRATED IMS - AUTOMATED TEST SUITE            
-====================================================
-• Testing: Product Catalog & Availability View... ✓ PASSED
-• Testing: Canteen POS Recipe-Based Ingredient Deduction... ✓ PASSED
-• Testing: Idempotency: Resending Same POS Event Does NOT Deduct Stock Twice... ✓ PASSED
-• Testing: Insufficient Stock Prevention & Atomic Rollback... ✓ PASSED
-• Testing: Employee Management System Sync & Deactivation Access Control... ✓ PASSED
-• Testing: Stock-In & Weighted Average Cost (WAC) Updating... ✓ PASSED
-• Testing: Reports Engine: Valuation & Expiration (FEFO) Reports... ✓ PASSED
-====================================================
-Results: 7 PASSED, 0 FAILED
-====================================================
+composer install
+php artisan key:generate
 ```
 
-### Step 5: Start the Application Server
+### 6. Launch Application
+You can run the web server using PHP artisan:
 ```bash
-node src/server.js
+php artisan serve --host=127.0.0.1 --port=8000
 ```
-Open your browser and navigate to:
+Or double-click [`start_server.bat`](start_server.bat) on Windows.
+
+Open your browser at: **[http://127.0.0.1:8000](http://127.0.0.1:8000)**
+
+---
+
+## 🔑 Default Cashier Accounts
+
+| Role | Username | Password | ID Number |
+| :--- | :--- | :--- | :--- |
+| **Lead Cashier** | `admin@school.com` | `password123` | `1001` |
+| **Canteen Staff** | `cashier1@school.com` | `password123` | `1002` |
+
+> Passwords use bcrypt hashing via `Hash::make()`, maintaining 100% interoperability with native PHP `password_hash()` across other school project modules.
+
+---
+
+## ⚡ Cashier Keyboard Shortcuts
+
+When operating the Point of Sale terminal (`/pos`):
+
+| Key | Action |
+| :--- | :--- |
+| <kbd>F2</kbd> | Jump cursor instantly to product search box |
+| <kbd>F4</kbd> | Toggle payment method between **Cash** and **GCash** |
+| <kbd>Enter</kbd> | Submit & complete checkout (when payment input is focused) |
+| <kbd>Esc</kbd> | Close receipt modal or clear active selection |
+
+---
+
+## 📂 Key File Architecture
+
 ```
-http://localhost:3000
+canteen_pos/
+├── app/
+│   ├── Http/Controllers/
+│   │   ├── AuthController.php        # Custom login/register (no Breeze), rate-limited
+│   │   ├── DashboardController.php   # Chart.js statistics & low-stock alerts
+│   │   ├── OrderController.php       # Transaction history & atomic cancellation/refund
+│   │   ├── ProductController.php     # Inventory management & quick restock
+│   │   ├── ReceiptController.php     # 80mm printable thermal receipt view
+│   │   └── ReportController.php      # Sales reports & CSV spreadsheet export
+│   ├── Livewire/
+│   │   └── Pos.php                   # Real-time POS component state & validation
+│   ├── Models/
+│   │   ├── Category.php              # Schema-qualified (canteen_pos.categories)
+│   │   ├── Order.php                 # Schema-qualified (canteen_pos.orders)
+│   │   ├── OrderItem.php             # Generated line_total protected
+│   │   ├── Payment.php               # Schema-qualified (canteen_pos.payments)
+│   │   ├── Product.php               # Schema-qualified (canteen_pos.products)
+│   │   └── User.php                  # Shared table (app1.users), custom pwd column
+│   └── Services/
+│       └── CheckoutService.php       # Concurrency locking & atomic DB::transaction
+├── database_schema_and_seed.sql      # Standalone PostgreSQL DDL and seed script
+├── public/
+│   ├── css/style.css                 # Minimalist executive design system
+│   └── favicon.svg                   # Vector SVG brand mark
+├── resources/views/
+│   ├── auth/                         # Clean login & cashier registration
+│   ├── layouts/app.blade.php         # Master obsidian header & navigation
+│   ├── livewire/pos.blade.php        # POS layout, shortcuts, audio, receipt modal
+│   ├── dashboard.blade.php           # KPI metrics, Chart.js trends, top products
+│   ├── orders/                       # Audit table, detail modal, void/cancel modal
+│   ├── products/                     # Product list, restock modal, add/edit forms
+│   └── reports/                      # Revenue breakdown & Excel/CSV export
+└── start_server.bat                  # One-click Windows application launcher
 ```
 
 ---
 
-## 7. User Personas & Credentials for Testing
+## 🎓 Academic Defense Notes
 
-Switch roles interactively via the top navigation dropdown:
-
-| Persona | Employee ID | Username | Password | Role | Permissions |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **System Admin** | `EMP-001` | `admin` | `admin123` | Administrator | Full access to all modules, settings, and logs |
-| **Inventory Manager** | `EMP-002` | `inv_mgr` | `admin123` | Inventory Manager | Product management, PO approvals, adjustments |
-| **Inventory Staff** | `EMP-003` | `inv_staff` | `admin123` | Inventory Staff | Stock-in receiving, dispatch logs, physical counting |
-| **Canteen Cashier** | `EMP-004` | `cashier1` | `admin123` | Canteen Cashier | Canteen POS sales, availability lookup, returns |
-| **Employee** | `EMP-005` | `john_doe` | `admin123` | Employee | View inventory levels, submit requests |
-
----
-
-## 8. Reports & Analytics (All 15 Required Reports)
-
-Access via the **Reports & Analytics** tab in the portal, with CSV export and printing support:
-1. **Current Inventory Report** (`/api/reports/current-inventory`)
-2. **Stock-In Report** (`/api/reports/stock-in`)
-3. **Stock-Out Report** (`/api/reports/stock-out`)
-4. **Inventory Movement Report** (`/api/reports/movement`)
-5. **Low Stock Report** (`/api/reports/low-stock`)
-6. **Out-of-Stock Report** (`/api/reports/out-of-stock`)
-7. **Expiration Report** (`/api/reports/expiration`) – Color-coded FEFO risk tags
-8. **Damaged Products Report** (`/api/reports/damaged`)
-9. **Supplier Performance Report** (`/api/reports/suppliers`)
-10. **Purchase Order Report** (`/api/reports/purchase-orders`)
-11. **Inventory Valuation Report** (`/api/reports/valuation`) – Weighted Average Cost
-12. **Canteen Sales Deductions Report** (`/api/reports/canteen-deductions`)
-13. **Employee Activity Report** (`/api/reports/employee-activities`)
-14. **Stock Adjustment Report** (`/api/reports/adjustments`)
-15. **Product Usage Report** (`/api/reports/product-usage`)
-
----
-
-## 9. Backup and Disaster Recovery
-
-Refer to `database/backup_and_recovery.sql` for production backup commands:
-```bash
-# Logical Plain Text Dump
-pg_dump -U postgres -h 127.0.0.1 -d integrated_management_db -F p -f "backup.sql"
-
-# Custom Compressed Production Archive
-pg_dump -U postgres -h 127.0.0.1 -d integrated_management_db -F c -f "backup.dump"
-
-# Restore Database
-pg_restore -U postgres -h 127.0.0.1 -d integrated_management_db -v -c "backup.dump"
-```
+1. **Why `lockForUpdate()` in `CheckoutService`?**
+   In a busy canteen, multiple cashiers may punch an order for the last remaining meal item simultaneously. Standard read-then-write logic causes race conditions resulting in negative stock. `lockForUpdate()` acquires an exclusive row-level lock in PostgreSQL during the transaction, guaranteeing strictly consistent inventory.
+2. **Why no Laravel migrations?**
+   The project connects to a pre-existing PostgreSQL database with a shared authentication schema (`app1.users`) used by multiple students. Running `artisan migrate` would attempt to create framework tables (`migrations`, `sessions`, `jobs`) in the public schema or alter shared structures. By utilizing schema-qualified models and file-based session/cache storage, the application operates cleanly without leaving unwanted footprints.
+3. **How does Order Cancellation work?**
+   Cancelling an order runs within an atomic `DB::transaction()` that locks the order and each associated product, increments the inventory counts, restores availability flags if stock was previously zero, marks the order status as `'cancelled'`, and excludes it from all subsequent sales calculations and Chart.js metrics.
