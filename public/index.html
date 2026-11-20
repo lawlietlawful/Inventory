@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMS Enterprise — Integrated Inventory Management System</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none'><rect width='64' height='64' rx='14' fill='%230f172a'/><path d='M32 14L49 23.5V41.5L32 51L15 41.5V23.5L32 14Z' stroke='%2338bdf8' stroke-width='3' stroke-linejoin='round' fill='%231e293b'/><path d='M32 14V32.5M32 32.5L49 23.5M32 32.5L15 23.5M32 32.5V51' stroke='%2338bdf8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/><circle cx='32' cy='32.5' r='3' fill='%2338bdf8'/></svg>">
+    
+    <link rel="stylesheet" href="css/app.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+    <!-- ====================================================================
+         SIDEBAR NAVIGATION
+         ==================================================================== -->
+    <aside id="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-logo-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
+            </div>
+            <div>
+                <div class="brand-title">IMS ENTERPRISE</div>
+                <div class="brand-subtitle">Central Inventory Hub</div>
+            </div>
+        </div>
+
+        <ul class="sidebar-menu">
+            <li class="menu-header">Overview</li>
+            <li class="menu-item active" data-view="dashboard">
+                <a href="#dashboard"><i data-lucide="layout-dashboard"></i> <span>Dashboard</span></a>
+            </li>
+
+            <li class="menu-header">Inventory Core</li>
+            <li class="menu-item" data-view="products">
+                <a href="#products"><i data-lucide="package"></i> <span>Product Catalog</span></a>
+            </li>
+            <li class="menu-item" data-view="stock-in">
+                <a href="#stock-in"><i data-lucide="arrow-down-to-line"></i> <span>Stock-In</span></a>
+            </li>
+            <li class="menu-item" data-view="stock-out">
+                <a href="#stock-out"><i data-lucide="arrow-up-from-line"></i> <span>Stock-Out</span></a>
+            </li>
+            <li class="menu-item" data-view="adjustments">
+                <a href="#adjustments"><i data-lucide="sliders-horizontal"></i> <span>Stock Adjustments</span></a>
+            </li>
+            <li class="menu-item" data-view="batches">
+                <a href="#batches">
+                    <div style="display:flex; align-items:center; gap:0.55rem; width:100%; justify-content:space-between;">
+                        <span style="display:flex; align-items:center; gap:0.55rem;">
+                            <i data-lucide="calendar-clock"></i> <span>Batches & Expiry</span>
+                        </span>
+                        <span class="menu-badge" id="badge-expiring" style="display:none;">0</span>
+                    </div>
+                </a>
+            </li>
+            <li class="menu-item" data-view="recipes">
+                <a href="#recipes"><i data-lucide="chef-hat"></i> <span>Recipes & BOM</span></a>
+            </li>
+
+            <li class="menu-header">Supply Chain</li>
+            <li class="menu-item" data-view="suppliers">
+                <a href="#suppliers"><i data-lucide="truck"></i> <span>Suppliers</span></a>
+            </li>
+            <li class="menu-item" data-view="purchase-orders">
+                <a href="#purchase-orders">
+                    <div style="display:flex; align-items:center; gap:0.55rem; width:100%; justify-content:space-between;">
+                        <span style="display:flex; align-items:center; gap:0.55rem;">
+                            <i data-lucide="clipboard-list"></i> <span>Purchase Orders</span>
+                        </span>
+                        <span class="menu-badge" id="badge-pending-pos" style="display:none;">0</span>
+                    </div>
+                </a>
+            </li>
+
+            <li class="menu-header">System Integrations</li>
+            <li class="menu-item" data-view="pos">
+                <a href="#pos"><i data-lucide="shopping-cart"></i> <span>Canteen POS Terminal</span></a>
+            </li>
+            <li class="menu-item" data-view="employees">
+                <a href="#employees"><i data-lucide="users"></i> <span>Employee System</span></a>
+            </li>
+
+            <li class="menu-header">Analytics & Audit</li>
+            <li class="menu-item" data-view="reports">
+                <a href="#reports"><i data-lucide="bar-chart-3"></i> <span>Reports & Analytics</span></a>
+            </li>
+            <li class="menu-item" data-view="audit-logs">
+                <a href="#audit-logs"><i data-lucide="file-text"></i> <span>Activity Audit Logs</span></a>
+            </li>
+            <li class="menu-item" data-view="settings">
+                <a href="#settings"><i data-lucide="settings"></i> <span>System Settings</span></a>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- ====================================================================
+         MAIN CONTENT WRAPPER
+         ==================================================================== -->
+    <div id="main-wrapper">
+        <!-- Top Navigation -->
+        <header id="topbar">
+            <div class="topbar-left">
+                <div class="search-box">
+                    <i data-lucide="search" class="search-icon"></i>
+                    <input type="text" id="global-search" placeholder="Search by product code, name, or barcode...">
+                </div>
+            </div>
+
+            <div class="topbar-right">
+                <div class="db-pill">
+                    <span class="db-status-dot"></span>
+                    <span id="db-status-text">PostgreSQL</span>
+                </div>
+
+                <div class="user-switcher">
+                    <i data-lucide="user-circle" class="user-switcher-icon"></i>
+                    <label>Active Persona:</label>
+                    <select id="user-role-select">
+                        <option value="1" selected>Administrator (EMP-001)</option>
+                        <option value="2">Inventory Manager (EMP-002)</option>
+                        <option value="3">Inventory Staff (EMP-003)</option>
+                        <option value="4">Canteen Cashier (EMP-004)</option>
+                        <option value="5">Employee (EMP-005)</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dynamic Body Views -->
+        <main class="content-body">
+
+            <!-- 1. VIEW: DASHBOARD -->
+            <section id="view-dashboard" class="app-view">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Inventory Dashboard</h1>
+                        <p class="page-subtitle">Central inventory monitoring and canteen sales integration metrics</p>
+                    </div>
+                    <button class="btn btn-secondary btn-sm" onclick="App.loadDashboard()"><i data-lucide="refresh-cw"></i> Refresh</button>
+                </div>
+
+                <!-- Summary Cards Grid -->
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <div class="metric-top">
+                            <span class="metric-header">Total Products</span>
+                            <div class="metric-icon-wrap" style="color: #0284c7; background: #e0f2fe;">
+                                <i data-lucide="package"></i>
+                            </div>
+                        </div>
+                        <div class="metric-value" id="stat-products">0</div>
+                        <div class="metric-footer" id="stat-categories">0 Categories</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-top">
+                            <span class="metric-header">Active Suppliers</span>
+                            <div class="metric-icon-wrap" style="color: #0d9488; background: #ccfbf1;">
+                                <i data-lucide="truck"></i>
+                            </div>
+                        </div>
+                        <div class="metric-value" id="stat-suppliers">0</div>
+                        <div class="metric-footer">Approved vendors</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-top">
+                            <span class="metric-header">Total Inventory Value</span>
+                            <div class="metric-icon-wrap" style="color: #16a34a; background: #dcfce7;">
+                                <i data-lucide="dollar-sign"></i>
+                            </div>
+                        </div>
+                        <div class="metric-value" id="stat-valuation">$0.00</div>
+                        <div class="metric-footer">Weighted Average Cost (WAC)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-top">
+                            <span class="metric-header">Low Stock Items</span>
+                            <div class="metric-icon-wrap" style="color: #d97706; background: #fef3c7;">
+                                <i data-lucide="alert-triangle"></i>
+                            </div>
+                        </div>
+                        <div class="metric-value" id="stat-low-stock" style="color: var(--color-warning-text);">0</div>
+                        <div class="metric-footer">At or below minimum level</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-top">
+                            <span class="metric-header">Out of Stock</span>
+                            <div class="metric-icon-wrap" style="color: #dc2626; background: #fee2e2;">
+                                <i data-lucide="alert-octagon"></i>
+                            </div>
+                        </div>
+                        <div class="metric-value" id="stat-out-stock" style="color: var(--color-danger-text);">0</div>
+                        <div class="metric-footer">Requires replenishment</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-top">
+                            <span class="metric-header">Expiring Soon</span>
+                            <div class="metric-icon-wrap" style="color: #ea580c; background: #ffedd5;">
+                                <i data-lucide="calendar-clock"></i>
+                            </div>
+                        </div>
+                        <div class="metric-value" id="stat-expiring" style="color: #c2410c;">0</div>
+                        <div class="metric-footer">Within next 15 days</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-top">
+                            <span class="metric-header">Pending Purchase Orders</span>
+                            <div class="metric-icon-wrap" style="color: #6366f1; background: #e0e7ff;">
+                                <i data-lucide="clipboard-list"></i>
+                            </div>
+                        </div>
+                        <div class="metric-value" id="stat-pending-po" style="color: #4338ca;">0</div>
+                        <div class="metric-footer">Awaiting manager approval</div>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem;">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title"><i data-lucide="bar-chart-2" style="width:16px;height:16px;margin-right:6px;color:var(--color-text-muted);"></i> Stock-In vs. Stock-Out by Category</h2>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="chart-movement" height="130"></canvas>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title"><i data-lucide="pie-chart" style="width:16px;height:16px;margin-right:6px;color:var(--color-text-muted);"></i> Inventory Value Distribution</h2>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="chart-valuation" height="130"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activities & Notifications -->
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.25rem;">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title"><i data-lucide="clock" style="width:16px;height:16px;margin-right:6px;color:var(--color-text-muted);"></i> Recent Inventory Transactions</h2>
+                            <a href="#reports" class="btn btn-secondary btn-sm"><i data-lucide="file-text"></i> Full Report</a>
+                        </div>
+                        <div class="card-body" style="padding: 0;">
+                            <div class="table-responsive">
+                                <table class="table" id="table-recent-txns">
+                                    <thead>
+                                        <tr>
+                                            <th>Transaction</th>
+                                            <th>Type</th>
+                                            <th>Product</th>
+                                            <th>Quantity</th>
+                                            <th>Reference</th>
+                                            <th>Employee</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td colspan="7" style="text-align: center; color: var(--color-text-subtle);">Loading transaction history...</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title"><i data-lucide="bell" style="width:16px;height:16px;margin-right:6px;color:var(--color-text-muted);"></i> System & Expiration Alerts</h2>
+                        </div>
+                        <div class="card-body" id="list-notifications" style="display: flex; flex-direction: column; gap: 0.65rem;">
+                            <!-- Injected alerts -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. VIEW: PRODUCTS -->
+            <section id="view-products" class="app-view" style="display:none;">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Product Management</h1>
+                        <p class="page-subtitle">Catalog of finished canteen goods, raw ingredients, and supplies</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="ProductsUI.openNewModal()"><i data-lucide="plus"></i> Add Product</button>
+                </div>
+
+                <div class="card">
+                    <div class="card-body" style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; border-bottom: 1px solid var(--color-border); padding: 0.85rem 1.25rem;">
+                        <input type="text" id="prod-filter-search" class="form-control" style="max-width: 260px;" placeholder="Filter by name, code, barcode..." oninput="ProductsUI.loadProducts()">
+                        <select id="prod-filter-category" class="form-control" style="max-width: 180px;" onchange="ProductsUI.loadProducts()">
+                            <option value="">All Categories</option>
+                        </select>
+                        <select id="prod-filter-availability" class="form-control" style="max-width: 180px;" onchange="ProductsUI.loadProducts()">
+                            <option value="">All Stock Levels</option>
+                            <option value="AVAILABLE">Available</option>
+                            <option value="LOW_STOCK">Low Stock</option>
+                            <option value="OUT_OF_STOCK">Out of Stock</option>
+                        </select>
+                        <button class="btn btn-secondary btn-sm" onclick="ProductsUI.resetFilters()"><i data-lucide="rotate-ccw"></i> Reset</button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table" id="table-products">
+                            <thead>
+                                <tr>
+                                    <th>Code</th>
+                                    <th>Barcode</th>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Unit</th>
+                                    <th>Current Stock</th>
+                                    <th>Min Stock</th>
+                                    <th>Cost (WAC)</th>
+                                    <th>Price</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. VIEW: STOCK-IN -->
+            <section id="view-stock-in" class="app-view" style="display:none;">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Stock-In Management</h1>
+                        <p class="page-subtitle">Record received vendor deliveries and update Weighted Average Cost</p>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1.6fr; gap: 1.25rem;">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title"><i data-lucide="arrow-down-to-line" style="width:16px;height:16px;margin-right:6px;color:var(--color-text-muted);"></i> Record Incoming Stock</h2>
+                        </div>
+                        <div class="card-body">
+                            <form id="form-stock-in" onsubmit="InventoryUI.handleStockIn(event)">
+                                <div class="form-group">
+                                    <label class="form-label">Product</label>
+                                    <select id="stockin-product" class="form-control" required></select>
+                                </div>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                                    <div class="form-group">
+                                        <label class="form-label">Quantity Received</label>
+                                        <input type="number" step="0.01" id="stockin-quantity" class="form-control" required min="0.01">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Unit Cost Price</label>
+                                        <input type="number" step="0.0001" id="stockin-cost" class="form-control" required min="0">
+                                    </div>
+                                </div>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                                    <div class="form-group">
+                                        <label class="form-label">Batch Number</label>
+                                        <input type="text" id="stockin-batch" class="form-control" placeholder="Auto-generated if blank">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Expiration Date (FEFO)</label>
+                                        <input type="date" id="stockin-expiration" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Reference ID / Delivery Receipt</label>
+                                    <input type="text" id="stockin-reference" class="form-control" placeholder="Receipt or PO number">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Remarks</label>
+                                    <textarea id="stockin-remarks" class="form-control" rows="2" placeholder="Inspection notes..."></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary" style="width: 100%;"><i data-lucide="check"></i> Confirm Stock-In</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title"><i data-lucide="history" style="width:16px;height:16px;margin-right:6px;color:var(--color-text-muted);"></i> Recent Stock-In History</h2>
+                        </div>
+                        <div class="card-body" style="padding: 0;">
+                            <div class="table-responsive">
+                                <table class="table" id="table-stockin-history">
+                                    <thead>
+                                        <tr>
+                                            <th>Transaction</th>
+                                            <th>Product</th>
+                                            <th>Quantity</th>
+                                            <th>Stock Balance</th>
+                                            <th>Reference</th>
+                                            <th>Employee</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. VIEW: STOCK-OUT -->
+            <section id="view-stock-out" class="app-view" style="display:none;">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Stock-Out Management</h1>
+                        <p class="page-subtitle">Record authorized dispatches, damaged items, and expired inventory</p>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1.6fr; gap: 1.25rem;">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title"><i data-lucide="arrow-up-from-line" style="width:16px;height:16px;margin-right:6px;color:var(--color-text-muted);"></i> Record Stock Dispatch</h2>
+                        </div>
+                        <div class="card-body">
+                            <form id="form-stock-out" onsubmit="InventoryUI.handleStockOut(event)">
+                                <div class="form-group">
+                                    <label class="form-label">Product</label>
+                                    <select id="stockout-product" class="form-control" required></select>
+                                </div>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                                    <div class="form-group">
+                                        <label class="form-label">Quantity to Deduct</label>
+                                        <input type="number" step="0.01" id="stockout-quantity" class="form-control" required min="0.01">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Reason</label>
+                                        <select id="stockout-reason" class="form-control" required>
+                                            <option value="Damaged Products">Damaged Products</option>
+                                            <option value="Expired Products">Expired Products</option>
+                                            <option value="Internal Consumption">Internal Consumption</option>
+                                            <option value="Authorized Distribution">Authorized Distribution</option>
+                                            <option value="Inventory Transfer">Inventory Transfer</option>
+                                            <option value="Other Approved Reason">Other Approved Reason</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Remarks and Justification</label>
+                                    <textarea id="stockout-remarks" class="form-control" rows="3" required placeholder="Describe reason for stock reduction..."></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary" style="width: 100%;"><i data-lucide="check"></i> Confirm Stock-Out</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title"><i data-lucide="history" style="width:16px;height:16px;margin-right:6px;color:var(--color-text-muted);"></i> Recent Stock-Out History</h2>
+                        </div>
+                        <div class="card-body" style="padding: 0;">
+                            <div class="table-responsive">
+                                <table class="table" id="table-stockout-history">
+                                    <thead>
+                                        <tr>
+                                            <th>Transaction</th>
+                                            <th>Product</th>
+                                            <th>Quantity</th>
+                                            <th>Reason</th>
+                                            <th>Remarks</th>
+                                            <th>Employee</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. VIEW: ADJUSTMENTS -->
+            <section id="view-adjustments" class="app-view" style="display:none;">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Stock Adjustments</h1>
+                        <p class="page-subtitle">Reconcile physical stock discrepancies with approval workflow</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="InventoryUI.openAdjustmentModal()"><i data-lucide="plus"></i> Request Adjustment</button>
+                </div>
+
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table" id="table-adjustments">
+                            <thead>
+                                <tr>
+                                    <th>Adjustment</th>
+                                    <th>Product</th>
+                                    <th>System Count</th>
+                                    <th>Physical Count</th>
+                                    <th>Difference</th>
+                                    <th>Reason</th>
+                                    <th>Requested By</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. VIEW: BATCHES & EXPIRATION -->
+            <section id="view-batches" class="app-view" style="display:none;">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Batches & Expiration Monitoring</h1>
+                        <p class="page-subtitle">First-Expired, First-Out (FEFO) batch tracking for perishable inventory</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table" id="table-batches">
+                            <thead>
+                                <tr>
+                                    <th>Batch Number</th>
+                                    <th>Product</th>
+                                    <th>Category</th>
+                                    <th>Remaining Stock</th>
+                                    <th>Expiration Date</th>
+                                    <th>Days Until Expiration</th>
+                                    <th>Risk Level</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7. VIEW: RECIPES & BOM -->
+            <section id="view-recipes" class="app-view" style="display:none;">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Product Recipes & Bill of Materials</h1>
+                        <p class="page-subtitle">Formula configurations for finished canteen food and beverage products</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="RecipesUI.openNewModal()"><i data-lucide="plus"></i> New Recipe</button>
+                </div>
+
+                <div id="recipes-cards-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.25rem;"></div>
+            </section>
+
+            <!-- 8. VIEW: SUPPLIERS -->
+            <section id="view-suppliers" class="app-view" style="display:none;">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Supplier Management</h1>
+                        <p class="page-subtitle">Vendor directory, contacts, and supplied inventory products</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="SuppliersUI.openNewModal()"><i data-lucide="plus"></i> Add Supplier</button>
+                </div>
+
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table" id="table-suppliers">
+                            <thead>
+                                <tr>
+                                    <th>Code</th>
+                                    <th>Supplier Name</th>
+                                    <th>Contact Person</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                    <th>Address</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 9. VIEW: PURCHASE ORDERS -->
+            <section id="view-purchase-orders" class="app-view" style="display:none;">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Purchase Order Management</h1>
+                        <p class="page-subtitle">Procurement orders, approval flow, and multi-delivery receiving</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="PurchaseOrdersUI.openNewModal()"><i data-lucide="plus"></i> New Purchase Order</button>
+                </div>
+
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table" id="table-purchase-orders">
+                            <thead>
+                                <tr>
+                                    <th>PO Number</th>
+                                    <th>Supplier</th>
+                                    <th>Requested By</th>
+                                    <th>Approved By</th>
+                                    <th>Order Date</th>
+                                    <th>Total Amount</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 10. VIEW: CANTEEN POS TERMINAL -->
+            <section id="view-pos" class="app-view" style="display:none;">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Canteen Cashier POS Terminal</h1>
+                        <p class="page-subtitle">Point of Sale checkout with automatic Bill of Materials (BOM) stock deductions</p>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="btn btn-secondary btn-sm" onclick="PosUI.loadCatalog()"><i data-lucide="refresh-cw"></i> Sync Catalog</button>
+                        <button class="btn btn-secondary btn-sm" onclick="PosUI.openRefundModal()"><i data-lucide="undo-2"></i> Process Refund</button>
+                    </div>
+                </div>
+
+                <div class="pos-container">
+                    <div>
+                        <div class="pos-category-bar">
+                            <button class="btn btn-sm btn-primary pos-cat-btn" data-cat="ALL" onclick="PosUI.filterCategory('ALL')"><i data-lucide="grid"></i> All Products</button>
+                            <button class="btn btn-sm btn-secondary pos-cat-btn" data-cat="Beverages" onclick="PosUI.filterCategory('Beverages')"><i data-lucide="coffee"></i> Beverages</button>
+                            <button class="btn btn-sm btn-secondary pos-cat-btn" data-cat="Food Products" onclick="PosUI.filterCategory('Food Products')"><i data-lucide="utensils"></i> Food</button>
+                            <button class="btn btn-sm btn-secondary pos-cat-btn" data-cat="Snacks & Confectionery" onclick="PosUI.filterCategory('Snacks & Confectionery')"><i data-lucide="cookie"></i> Snacks</button>
+                        </div>
+                        <div class="pos-grid" id="pos-items-grid"></div>
+                    </div>
+
+                    <!-- Order Ticket -->
+                    <div class="pos-ticket">
+                        <div class="pos-ticket-header">
+                            <div>
+                                <div style="font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; gap: 0.35rem;">
+                                    <i data-lucide="receipt" style="width: 14px; height: 14px; color: var(--color-text-muted);"></i>
+                                    <span>Ticket #<span id="pos-txn-id">1001</span></span>
+                                </div>
+                                <div style="font-size: 0.72rem; color: var(--color-text-muted); margin-top: 1px;">Cashier: <span id="pos-cashier-label">Elena Rostova</span></div>
+                            </div>
+                            <span class="badge badge-success" style="display: inline-flex; align-items: center; gap: 4px;">
+                                <span class="db-status-dot" style="width: 5px; height: 5px;"></span> POS Live
+                            </span>
+                        </div>
+
+                        <div class="pos-ticket-body" id="pos-cart-items">
+                            <div style="text-align: center; color: var(--color-text-subtle); padding: 3rem 1rem; font-size: 0.825rem;">
+                                Select products from the catalog to build an order.
+                            </div>
+                        </div>
+
+                        <div class="pos-ticket-footer">
+                            <div class="pos-summary-row">
+                                <span>Subtotal</span>
+                                <span id="pos-subtotal">$0.00</span>
+                            </div>
+                            <div class="pos-total-row">
+                                <span>Total Payable</span>
+                                <span id="pos-total">$0.00</span>
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 0.5rem;">
+                                <button class="btn btn-secondary" onclick="PosUI.clearCart()"><i data-lucide="trash-2"></i> Clear</button>
+                                <button class="btn btn-primary" id="btn-process-sale" onclick="PosUI.processCheckout()"><i data-lucide="credit-card"></i> Complete Sale</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 11. VIEW: EMPLOYEE INTEGRATION -->
+            <section id="view-employees" class="app-view" style="display:none;">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Employee Management System Integration</h1>
+                        <p class="page-subtitle">Synchronize employee accounts, enforce access status, and view audit footprints</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="EmployeesUI.openSyncModal()"><i data-lucide="refresh-cw"></i> Sync from EMS</button>
+                </div>
+
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table" id="table-employees">
+                            <thead>
+                                <tr>
+                                    <th>Employee ID</th>
+                                    <th>Full Name</th>
+                                    <th>Username</th>
+                                    <th>Department</th>
+                                    <th>Role</th>
+                                    <th>Email</th>
+                                    <th>Account Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 12. VIEW: REPORTS & ANALYTICS -->
+            <section id="view-reports" class="app-view" style="display:none;">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Reports & Analytics</h1>
+                        <p class="page-subtitle">Standard enterprise reports generated directly from database records</p>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="btn btn-secondary btn-sm" onclick="ReportsUI.exportCSV()"><i data-lucide="download"></i> Export CSV</button>
+                        <button class="btn btn-secondary btn-sm" onclick="window.print()"><i data-lucide="printer"></i> Print Report</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body" style="border-bottom: 1px solid var(--color-border); padding: 0.85rem 1.25rem;">
+                        <div style="max-width: 340px;">
+                            <label class="form-label">Select Report</label>
+                            <select id="report-type-select" class="form-control" onchange="ReportsUI.loadActiveReport()">
+                                <option value="current-inventory">1. Current Inventory Report</option>
+                                <option value="stock-in">2. Stock-In Report</option>
+                                <option value="stock-out">3. Stock-Out Report</option>
+                                <option value="movement">4. Inventory Movement Report</option>
+                                <option value="low-stock">5. Low Stock Report</option>
+                                <option value="out-of-stock">6. Out-of-Stock Report</option>
+                                <option value="expiration">7. Expiration Report (FEFO)</option>
+                                <option value="damaged">8. Damaged Products Report</option>
+                                <option value="suppliers">9. Supplier Report</option>
+                                <option value="purchase-orders">10. Purchase Order Report</option>
+                                <option value="valuation">11. Inventory Valuation Report (WAC)</option>
+                                <option value="canteen-deductions">12. Canteen Sales & Ingredient Deductions</option>
+                                <option value="employee-activities">13. Employee Inventory Activity Report</option>
+                                <option value="adjustments">14. Stock Adjustment Report</option>
+                                <option value="product-usage">15. Product Usage Report</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive" id="report-table-wrapper" style="padding: 1rem 1.25rem;"></div>
+                </div>
+            </section>
+
+            <!-- 13. VIEW: AUDIT LOGS -->
+            <section id="view-audit-logs" class="app-view" style="display:none;">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Activity Audit Logs</h1>
+                        <p class="page-subtitle">Immutable operational logs tracking system actions, user logins, and adjustments</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table" id="table-audit-logs">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Employee ID</th>
+                                    <th>Employee Name</th>
+                                    <th>Action</th>
+                                    <th>Module</th>
+                                    <th>Description</th>
+                                    <th>IP Address</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 14. VIEW: SETTINGS -->
+            <section id="view-settings" class="app-view" style="display:none;">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">System Settings</h1>
+                        <p class="page-subtitle">Configuration parameters, database connectivity, and policy thresholds</p>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title"><i data-lucide="database" style="width:16px;height:16px;margin-right:6px;color:var(--color-text-muted);"></i> Database Status</h2>
+                        </div>
+                        <div class="card-body" id="settings-db-status"></div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title"><i data-lucide="shield-check" style="width:16px;height:16px;margin-right:6px;color:var(--color-text-muted);"></i> Operational Policies</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="form-label">Valuation Algorithm</label>
+                                <input type="text" class="form-control" value="Weighted Average Cost (WAC)" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Batch Allocation Policy</label>
+                                <input type="text" class="form-control" value="First-Expired, First-Out (FEFO)" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Negative Stock Policy</label>
+                                <input type="text" class="form-control" value="Strictly Prohibited (Atomic Rollback on Oversell)" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Inactive Employee Policy</label>
+                                <input type="text" class="form-control" value="Immediate Access Revocation" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Modals Container -->
+    <div id="modal-container"></div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

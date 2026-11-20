@@ -1,0 +1,2900 @@
+{
+  "departments": [
+    {
+      "id": 1,
+      "department_name": "Executive & Administration",
+      "description": "Executive management and general administration",
+      "created_at": "2026-11-19T03:30:14.869Z"
+    },
+    {
+      "id": 2,
+      "department_name": "Food & Beverage (Canteen",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 3,
+      "department_name": "Warehouse & Inventory Logistics",
+      "description": "Inventory storage, receiving, stock dispatch, and auditing",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 4,
+      "department_name": "Human Resources",
+      "description": "Employee records, onboarding, departments, and personnel management",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 5,
+      "department_name": "Finance & Procurement",
+      "description": "Purchasing, supplier accounts, and inventory valuation",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 6,
+      "department_name": "IT & Systems Operations",
+      "description": "System administration, POS integration, and network maintenance",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    }
+  ],
+  "roles": [
+    {
+      "id": 1,
+      "role_name": "Administrator",
+      "description": "Full system access to all modules, users, settings, and logs",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 2,
+      "role_name": "Inventory Manager",
+      "description": "Manages products, suppliers, purchase orders, approvals, and reports",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 3,
+      "role_name": "Inventory Staff",
+      "description": "Receives stock, records movements, logs damaged/expired goods",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 4,
+      "role_name": "Canteen Cashier",
+      "description": "Operates POS terminal, views product availability, executes sales",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 5,
+      "role_name": "Employee",
+      "description": "Regular employee with viewing rights and self-service requests",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    }
+  ],
+  "permissions": [
+    {
+      "id": 1,
+      "permission_name": "manage_users",
+      "description": "Create, update, and manage user accounts",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 2,
+      "permission_name": "manage_products",
+      "description": "Create, update, and archive products",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 3,
+      "permission_name": "view_products",
+      "description": "View product details and stock status",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 4,
+      "permission_name": "manage_inventory",
+      "description": "Process stock-in, stock-out, adjustments, and transfers",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 5,
+      "permission_name": "view_inventory",
+      "description": "View inventory levels, batches, and movements",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 6,
+      "permission_name": "manage_purchase_orders",
+      "description": "Create and modify purchase orders",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 7,
+      "permission_name": "approve_purchase_orders",
+      "description": "Approve purchase orders for ordering",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 8,
+      "permission_name": "receive_purchase_orders",
+      "description": "Receive deliveries and update stock batches",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 9,
+      "permission_name": "manage_suppliers",
+      "description": "Manage supplier records and contracts",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 10,
+      "permission_name": "manage_recipes",
+      "description": "Create and configure product recipes and BOM items",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 11,
+      "permission_name": "operate_pos",
+      "description": "Process canteen POS transactions and lookups",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 12,
+      "permission_name": "approve_adjustments",
+      "description": "Authorize stock discrepancies and write-offs",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 13,
+      "permission_name": "view_reports",
+      "description": "Generate and export inventory, financial, and integration reports",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 14,
+      "permission_name": "manage_settings",
+      "description": "Modify system parameters, alerts, and integration hooks",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    }
+  ],
+  "role_permissions": [
+    {
+      "role_id": 1,
+      "permission_id": 1,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 1
+    },
+    {
+      "role_id": 1,
+      "permission_id": 2,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 2
+    },
+    {
+      "role_id": 1,
+      "permission_id": 3,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 3
+    },
+    {
+      "role_id": 1,
+      "permission_id": 4,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 4
+    },
+    {
+      "role_id": 1,
+      "permission_id": 5,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 5
+    },
+    {
+      "role_id": 1,
+      "permission_id": 6,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 6
+    },
+    {
+      "role_id": 1,
+      "permission_id": 7,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 7
+    },
+    {
+      "role_id": 1,
+      "permission_id": 8,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 8
+    },
+    {
+      "role_id": 1,
+      "permission_id": 9,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 9
+    },
+    {
+      "role_id": 1,
+      "permission_id": 10,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 10
+    },
+    {
+      "role_id": 1,
+      "permission_id": 11,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 11
+    },
+    {
+      "role_id": 1,
+      "permission_id": 12,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 12
+    },
+    {
+      "role_id": 1,
+      "permission_id": 13,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 13
+    },
+    {
+      "role_id": 1,
+      "permission_id": 14,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 14
+    },
+    {
+      "role_id": 2,
+      "permission_id": 3,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 15
+    },
+    {
+      "role_id": 2,
+      "permission_id": 2,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 16
+    },
+    {
+      "role_id": 2,
+      "permission_id": 3,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 17
+    },
+    {
+      "role_id": 2,
+      "permission_id": 4,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 18
+    },
+    {
+      "role_id": 2,
+      "permission_id": 5,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 19
+    },
+    {
+      "role_id": 2,
+      "permission_id": 6,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 20
+    },
+    {
+      "role_id": 2,
+      "permission_id": 7,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 21
+    },
+    {
+      "role_id": 2,
+      "permission_id": 8,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 22
+    },
+    {
+      "role_id": 2,
+      "permission_id": 9,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 23
+    },
+    {
+      "role_id": 2,
+      "permission_id": 10,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 24
+    },
+    {
+      "role_id": 2,
+      "permission_id": 12,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 25
+    },
+    {
+      "role_id": 2,
+      "permission_id": 13,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 26
+    },
+    {
+      "role_id": 3,
+      "permission_id": 4,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 27
+    },
+    {
+      "role_id": 3,
+      "permission_id": 3,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 28
+    },
+    {
+      "role_id": 3,
+      "permission_id": 4,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 29
+    },
+    {
+      "role_id": 3,
+      "permission_id": 5,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 30
+    },
+    {
+      "role_id": 3,
+      "permission_id": 6,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 31
+    },
+    {
+      "role_id": 3,
+      "permission_id": 8,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 32
+    },
+    {
+      "role_id": 3,
+      "permission_id": 10,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 33
+    },
+    {
+      "role_id": 3,
+      "permission_id": 5,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 34
+    },
+    {
+      "role_id": 4,
+      "permission_id": 3,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 35
+    },
+    {
+      "role_id": 4,
+      "permission_id": 5,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 36
+    },
+    {
+      "role_id": 4,
+      "permission_id": 11,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 37
+    },
+    {
+      "role_id": 3,
+      "permission_id": 5,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 38
+    },
+    {
+      "role_id": 5,
+      "permission_id": 3,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 39
+    },
+    {
+      "role_id": 5,
+      "permission_id": 5,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 40
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "employee_id": "EMP-001",
+      "username": "admin",
+      "password": "$2a$10$0rLzSjB3rU7qGv6lUqgX5O2sUo/y1a2zK0rU7qGv6lUqgX5O2sUo.",
+      "role_id": 1,
+      "department_id": 1,
+      "full_name": "System Administrator",
+      "email": "admin@canteen-ims.local",
+      "phone": "555-0101",
+      "account_status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 2,
+      "employee_id": "EMP-002",
+      "username": "inv_mgr",
+      "password": "$2a$10$0rLzSjB3rU7qGv6lUqgX5O2sUo/y1a2zK0rU7qGv6lUqgX5O2sUo.",
+      "role_id": 2,
+      "department_id": 3,
+      "full_name": "Sarah Connor",
+      "email": "s.connor@canteen-ims.local",
+      "phone": "555-0102",
+      "account_status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 3,
+      "employee_id": "EMP-003",
+      "username": "inv_staff",
+      "password": "$2a$10$0rLzSjB3rU7qGv6lUqgX5O2sUo/y1a2zK0rU7qGv6lUqgX5O2sUo.",
+      "role_id": 3,
+      "department_id": 3,
+      "full_name": "Marcus Vance",
+      "email": "m.vance@canteen-ims.local",
+      "phone": "555-0103",
+      "account_status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 4,
+      "employee_id": "EMP-004",
+      "username": "cashier1",
+      "password": "$2a$10$0rLzSjB3rU7qGv6lUqgX5O2sUo/y1a2zK0rU7qGv6lUqgX5O2sUo.",
+      "role_id": 4,
+      "department_id": 2,
+      "full_name": "Elena Rostova",
+      "email": "e.rostova@canteen-ims.local",
+      "phone": "555-0104",
+      "account_status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 5,
+      "employee_id": "EMP-005",
+      "username": "john_doe",
+      "password": "$2a$10$0rLzSjB3rU7qGv6lUqgX5O2sUo/y1a2zK0rU7qGv6lUqgX5O2sUo.",
+      "role_id": 5,
+      "department_id": 4,
+      "full_name": "John Doe",
+      "email": "j.doe@canteen-ims.local",
+      "phone": "555-0105",
+      "account_status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 6,
+      "employee_id": "EMP-006",
+      "username": "inactive_user",
+      "password": "$2a$10$0rLzSjB3rU7qGv6lUqgX5O2sUo/y1a2zK0rU7qGv6lUqgX5O2sUo.",
+      "role_id": 5,
+      "department_id": 5,
+      "full_name": "Thomas Wright",
+      "email": "t.wright@canteen-ims.local",
+      "phone": "555-0106",
+      "account_status": "INACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "employee_id": "EMP-TEST-99",
+      "username": "test.officer",
+      "password": "$2a$10$0rLzSjB3rU7qGv6lUqgX5O2sUo/y1a2zK0rU7qGv6lUqgX5O2sUo.",
+      "role_id": 3,
+      "department_id": 3,
+      "full_name": "Test Officer",
+      "email": "test.officer@canteen-ims.local",
+      "phone": null,
+      "account_status": "INACTIVE",
+      "created_at": "NOW(",
+      "updated_at": "2026-11-19T04:03:24.029Z",
+      "id": 7
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "category_name": "Beverages",
+      "description": "Prepared and pre-packaged drinks, sodas, and juices",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 2,
+      "category_name": "Food Products",
+      "description": "Ready-to-eat meals, sandwiches, and hot snacks",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 3,
+      "category_name": "Ingredients",
+      "description": "Raw materials, dairy, syrups, coffee, and culinary supplies",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 4,
+      "category_name": "Snacks & Confectionery",
+      "description": "Packaged chips, biscuits, cookies, and candy",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 5,
+      "category_name": "Packaging Materials",
+      "description": "Cups, lids, straws, paper wraps, and bags",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 6,
+      "category_name": "Cleaning Supplies",
+      "description": "Detergents, disinfectants, sanitizers, and towels",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 7,
+      "category_name": "Office Supplies",
+      "description": "POS receipt rolls, register supplies, and stationery",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    }
+  ],
+  "units": [
+    {
+      "id": 1,
+      "unit_name": "Piece",
+      "abbreviation": "pcs",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 2,
+      "unit_name": "Kilogram",
+      "abbreviation": "kg",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 3,
+      "unit_name": "Gram",
+      "abbreviation": "g",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 4,
+      "unit_name": "Liter",
+      "abbreviation": "L",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 5,
+      "unit_name": "Milliliter",
+      "abbreviation": "ml",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 6,
+      "unit_name": "Pack",
+      "abbreviation": "pack",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 7,
+      "unit_name": "Box",
+      "abbreviation": "box",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 8,
+      "unit_name": "Bottle",
+      "abbreviation": "btl",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 9,
+      "unit_name": "Can",
+      "abbreviation": "can",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 10,
+      "unit_name": "Roll",
+      "abbreviation": "roll",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    }
+  ],
+  "products": [
+    {
+      "id": "Recipe-based",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 1,
+      "product_code": "PRD-BEV-001",
+      "barcode": 8901001001,
+      "product_name": "Signature Iced Coffee",
+      "category_id": 1,
+      "unit_id": 1,
+      "description": "Cold brew coffee with fresh milk and caramel syrup",
+      "cost_price": 35,
+      "selling_price": 75,
+      "minimum_stock": 10,
+      "maximum_stock": 200,
+      "current_stock": 50,
+      "reorder_level": 20,
+      "expiration_tracking": false,
+      "is_recipe_item": true,
+      "is_ingredient": false,
+      "status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 2,
+      "product_code": "PRD-FOD-001",
+      "barcode": 8901001002,
+      "product_name": "Deluxe Club Sandwich",
+      "category_id": 2,
+      "unit_id": 1,
+      "description": "Toasted sandwich with smoked ham, cheddar cheese, and mayo",
+      "cost_price": 45,
+      "selling_price": 95,
+      "minimum_stock": 5,
+      "maximum_stock": 100,
+      "current_stock": 30,
+      "reorder_level": 15,
+      "expiration_tracking": false,
+      "is_recipe_item": true,
+      "is_ingredient": false,
+      "status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 3,
+      "product_code": "PRD-BEV-002",
+      "barcode": 8901001003,
+      "product_name": "Classic Milk Tea",
+      "category_id": 1,
+      "unit_id": 1,
+      "description": "Black tea with fresh milk and chewy tapioca pearls",
+      "cost_price": 32,
+      "selling_price": 70,
+      "minimum_stock": 10,
+      "maximum_stock": 150,
+      "current_stock": 40,
+      "reorder_level": 20,
+      "expiration_tracking": false,
+      "is_recipe_item": true,
+      "is_ingredient": false,
+      "status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": "Non-recipe",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 4,
+      "product_code": "PRD-BEV-003",
+      "barcode": 8901002001,
+      "product_name": "Bottled Mineral Water 500ml",
+      "category_id": 1,
+      "unit_id": 8,
+      "description": "Pure mountain mineral spring water",
+      "cost_price": 13.8709,
+      "selling_price": 20,
+      "minimum_stock": 24,
+      "maximum_stock": 300,
+      "current_stock": 512,
+      "reorder_level": 48,
+      "expiration_tracking": true,
+      "is_recipe_item": false,
+      "is_ingredient": false,
+      "status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "updated_at": "2026-11-19T04:03:24.031Z"
+    },
+    {
+      "id": 5,
+      "product_code": "PRD-BEV-004",
+      "barcode": 8901002002,
+      "product_name": "Cola Soda Can 330ml",
+      "category_id": 1,
+      "unit_id": 9,
+      "description": "Chilled carbonated soft drink",
+      "cost_price": 18,
+      "selling_price": 35,
+      "minimum_stock": 24,
+      "maximum_stock": 240,
+      "current_stock": 72,
+      "reorder_level": 36,
+      "expiration_tracking": true,
+      "is_recipe_item": false,
+      "is_ingredient": false,
+      "status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 6,
+      "product_code": "PRD-SNK-001",
+      "barcode": 8901003001,
+      "product_name": "Artisan Potato Chips 60g",
+      "category_id": 4,
+      "unit_id": 6,
+      "description": "Crispy salted potato chips",
+      "cost_price": 22,
+      "selling_price": 40,
+      "minimum_stock": 15,
+      "maximum_stock": 120,
+      "current_stock": 45,
+      "reorder_level": 25,
+      "expiration_tracking": true,
+      "is_recipe_item": false,
+      "is_ingredient": false,
+      "status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 7,
+      "product_code": "ING-COF-001",
+      "barcode": 8902001001,
+      "product_name": "Espresso Roast Concentrate",
+      "category_id": 3,
+      "unit_id": 5,
+      "description": "High intensity cold drip coffee base",
+      "cost_price": 0.25,
+      "selling_price": 0,
+      "minimum_stock": 500,
+      "maximum_stock": 5000,
+      "current_stock": 2100,
+      "reorder_level": 1000,
+      "expiration_tracking": true,
+      "is_recipe_item": false,
+      "is_ingredient": true,
+      "status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "updated_at": "2026-11-19T04:03:24.022Z"
+    },
+    {
+      "id": 8,
+      "product_code": "ING-MLK-001",
+      "barcode": 8902001002,
+      "product_name": "Pasteurized Whole Milk",
+      "category_id": 3,
+      "unit_id": 5,
+      "description": "Fresh homogenized dairy milk",
+      "cost_price": 0.08,
+      "selling_price": 0,
+      "minimum_stock": 1000,
+      "maximum_stock": 10000,
+      "current_stock": 4800,
+      "reorder_level": 2000,
+      "expiration_tracking": true,
+      "is_recipe_item": false,
+      "is_ingredient": true,
+      "status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "updated_at": "2026-11-19T04:03:24.023Z"
+    },
+    {
+      "id": 9,
+      "product_code": "ING-SYR-001",
+      "barcode": 8902001003,
+      "product_name": "Natural Simple Cane Syrup",
+      "category_id": 3,
+      "unit_id": 5,
+      "description": "Sweetener syrup for cold drinks",
+      "cost_price": 0.05,
+      "selling_price": 0,
+      "minimum_stock": 500,
+      "maximum_stock": 5000,
+      "current_stock": 2840,
+      "reorder_level": 1000,
+      "expiration_tracking": true,
+      "is_recipe_item": false,
+      "is_ingredient": true,
+      "status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "updated_at": "2026-11-19T04:03:24.024Z"
+    },
+    {
+      "id": 10,
+      "product_code": "PKG-CUP-001",
+      "barcode": 8903001001,
+      "product_name": "Cold Cup 16oz Clear PET",
+      "category_id": 5,
+      "unit_id": 1,
+      "description": "Clear recyclable beverage cups",
+      "cost_price": 2.5,
+      "selling_price": 0,
+      "minimum_stock": 50,
+      "maximum_stock": 1000,
+      "current_stock": 342,
+      "reorder_level": 100,
+      "expiration_tracking": false,
+      "is_recipe_item": false,
+      "is_ingredient": true,
+      "status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "updated_at": "2026-11-19T04:03:24.020Z"
+    },
+    {
+      "id": 11,
+      "product_code": "PKG-LID-001",
+      "barcode": 8903001002,
+      "product_name": "Dome Cup Lid 16oz",
+      "category_id": 5,
+      "unit_id": 1,
+      "description": "Matching tight-seal dome lids",
+      "cost_price": 1,
+      "selling_price": 0,
+      "minimum_stock": 50,
+      "maximum_stock": 1000,
+      "current_stock": 342,
+      "reorder_level": 100,
+      "expiration_tracking": false,
+      "is_recipe_item": false,
+      "is_ingredient": true,
+      "status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "updated_at": "2026-11-19T04:03:24.021Z"
+    },
+    {
+      "id": 12,
+      "product_code": "ING-BRD-001",
+      "barcode": 8902002001,
+      "product_name": "Whole Wheat Bread Slices",
+      "category_id": 3,
+      "unit_id": 1,
+      "description": "Fresh bakery sandwich bread slices",
+      "cost_price": 1.5,
+      "selling_price": 0,
+      "minimum_stock": 20,
+      "maximum_stock": 300,
+      "current_stock": 100,
+      "reorder_level": 40,
+      "expiration_tracking": true,
+      "is_recipe_item": false,
+      "is_ingredient": true,
+      "status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 13,
+      "product_code": "ING-HAM-001",
+      "barcode": 8902002002,
+      "product_name": "Smoked Deli Ham Slices",
+      "category_id": 3,
+      "unit_id": 1,
+      "description": "Cured deli ham slices",
+      "cost_price": 8,
+      "selling_price": 0,
+      "minimum_stock": 20,
+      "maximum_stock": 200,
+      "current_stock": 80,
+      "reorder_level": 40,
+      "expiration_tracking": true,
+      "is_recipe_item": false,
+      "is_ingredient": true,
+      "status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 14,
+      "product_code": "ING-CHS-001",
+      "barcode": 8902002003,
+      "product_name": "Cheddar Cheese Slices",
+      "category_id": 3,
+      "unit_id": 1,
+      "description": "Aged yellow cheddar cheese slices",
+      "cost_price": 6,
+      "selling_price": 0,
+      "minimum_stock": 20,
+      "maximum_stock": 200,
+      "current_stock": 75,
+      "reorder_level": 40,
+      "expiration_tracking": true,
+      "is_recipe_item": false,
+      "is_ingredient": true,
+      "status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 15,
+      "product_code": "ING-MAY-001",
+      "barcode": 8902002004,
+      "product_name": "Classic Mayonnaise Sauce",
+      "category_id": 3,
+      "unit_id": 3,
+      "description": "Creamy sandwich spread",
+      "cost_price": 0.05,
+      "selling_price": 0,
+      "minimum_stock": 200,
+      "maximum_stock": 3000,
+      "current_stock": 1200,
+      "reorder_level": 500,
+      "expiration_tracking": true,
+      "is_recipe_item": false,
+      "is_ingredient": true,
+      "status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 16,
+      "product_code": "PKG-STR-001",
+      "barcode": 8903001003,
+      "product_name": "Boba Straw Eco-Paper",
+      "category_id": 5,
+      "unit_id": 1,
+      "description": "Wide diameter biodegradable paper straws",
+      "cost_price": 0.8,
+      "selling_price": 0,
+      "minimum_stock": 50,
+      "maximum_stock": 1000,
+      "current_stock": 400,
+      "reorder_level": 100,
+      "expiration_tracking": false,
+      "is_recipe_item": false,
+      "is_ingredient": true,
+      "status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 17,
+      "product_code": "ING-TEA-001",
+      "barcode": 8902003001,
+      "product_name": "Assam Black Tea Leaves",
+      "category_id": 3,
+      "unit_id": 3,
+      "description": "Premium loose tea leaves for milk tea",
+      "cost_price": 0.4,
+      "selling_price": 0,
+      "minimum_stock": 200,
+      "maximum_stock": 2000,
+      "current_stock": 800,
+      "reorder_level": 400,
+      "expiration_tracking": true,
+      "is_recipe_item": false,
+      "is_ingredient": true,
+      "status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 18,
+      "product_code": "ING-PRL-001",
+      "barcode": 8902003002,
+      "product_name": "Brown Sugar Tapioca Pearls",
+      "category_id": 3,
+      "unit_id": 3,
+      "description": "Cooked brown sugar boba pearls",
+      "cost_price": 0.15,
+      "selling_price": 0,
+      "minimum_stock": 500,
+      "maximum_stock": 4000,
+      "current_stock": 1500,
+      "reorder_level": 600,
+      "expiration_tracking": true,
+      "is_recipe_item": false,
+      "is_ingredient": true,
+      "status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 19,
+      "product_code": "SUP-CLN-001",
+      "barcode": 8904001001,
+      "product_name": "Food Grade Sanitizer 5L",
+      "category_id": 6,
+      "unit_id": 4,
+      "description": "Antibacterial surface sanitizer for food prep",
+      "cost_price": 250,
+      "selling_price": 0,
+      "minimum_stock": 2,
+      "maximum_stock": 20,
+      "current_stock": 8,
+      "reorder_level": 4,
+      "expiration_tracking": false,
+      "is_recipe_item": false,
+      "is_ingredient": false,
+      "status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 20,
+      "product_code": "SUP-POS-001",
+      "barcode": 8904002001,
+      "product_name": "Thermal Receipt Paper 80mm",
+      "category_id": 7,
+      "unit_id": 10,
+      "description": "BPA-free thermal POS rolls",
+      "cost_price": 35,
+      "selling_price": 0,
+      "minimum_stock": 10,
+      "maximum_stock": 100,
+      "current_stock": 25,
+      "reorder_level": 15,
+      "expiration_tracking": false,
+      "is_recipe_item": false,
+      "is_ingredient": false,
+      "status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    }
+  ],
+  "suppliers": [
+    {
+      "id": 1,
+      "supplier_code": "SUP-001",
+      "supplier_name": "Golden Roast Coffee Roasters",
+      "contact_person": "Arthur Dent",
+      "contact_number": "+63 917 111 2233",
+      "email": "orders@goldenroast.ph",
+      "address": "Bldg 4, Coffee Trade Zone, Pasig City",
+      "status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 2,
+      "supplier_code": "SUP-002",
+      "supplier_name": "Metro Dairy & Fresh Foods Corp",
+      "contact_person": "Rachel Green",
+      "contact_number": "+63 920 333 4455",
+      "email": "sales@metrodairy.com",
+      "address": "Warehouse 12, Food Terminal, Taguig City",
+      "status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 3,
+      "supplier_code": "SUP-003",
+      "supplier_name": "Apex Eco Packaging Solutions",
+      "contact_person": "Walter White",
+      "contact_number": "+63 918 555 6677",
+      "email": "inquiries@apexpack.ph",
+      "address": "Lot 8, Industrial Park, Laguna",
+      "status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 4,
+      "supplier_code": "SUP-004",
+      "supplier_name": "Universal Beverage & Snack Dist.",
+      "contact_person": "Diane Prince",
+      "contact_number": "+63 905 777 8899",
+      "email": "dispatch@unidist.com",
+      "address": "KM 14 West Service Rd, Parañaque City",
+      "status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    }
+  ],
+  "supplier_products": [
+    {
+      "supplier_id": 1,
+      "product_id": 7,
+      "supplier_product_code": "GR-COF-5000",
+      "purchase_price": 0.23,
+      "lead_time_days": 2,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 1
+    },
+    {
+      "supplier_id": 1,
+      "product_id": 9,
+      "supplier_product_code": "GR-SYR-5000",
+      "purchase_price": 0.045,
+      "lead_time_days": 2,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 2
+    },
+    {
+      "supplier_id": 1,
+      "product_id": 17,
+      "supplier_product_code": "GR-TEA-1000",
+      "purchase_price": 0.38,
+      "lead_time_days": 3,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 3
+    },
+    {
+      "supplier_id": 2,
+      "product_id": 8,
+      "supplier_product_code": "MD-MLK-10L",
+      "purchase_price": 0.075,
+      "lead_time_days": 1,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 4
+    },
+    {
+      "supplier_id": 2,
+      "product_id": 12,
+      "supplier_product_code": "MD-BRD-50",
+      "purchase_price": 1.4,
+      "lead_time_days": 1,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 5
+    },
+    {
+      "supplier_id": 2,
+      "product_id": 13,
+      "supplier_product_code": "MD-HAM-100",
+      "purchase_price": 7.5,
+      "lead_time_days": 2,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 6
+    },
+    {
+      "supplier_id": 2,
+      "product_id": 14,
+      "supplier_product_code": "MD-CHS-100",
+      "purchase_price": 5.6,
+      "lead_time_days": 2,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 7
+    },
+    {
+      "supplier_id": 2,
+      "product_id": 15,
+      "supplier_product_code": "MD-MAY-5K",
+      "purchase_price": 0.045,
+      "lead_time_days": 2,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 8
+    },
+    {
+      "supplier_id": 3,
+      "product_id": 10,
+      "supplier_product_code": "AP-CUP-16",
+      "purchase_price": 2.3,
+      "lead_time_days": 3,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 9
+    },
+    {
+      "supplier_id": 3,
+      "product_id": 11,
+      "supplier_product_code": "AP-LID-16",
+      "purchase_price": 0.9,
+      "lead_time_days": 3,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 10
+    },
+    {
+      "supplier_id": 3,
+      "product_id": 16,
+      "supplier_product_code": "AP-STR-BOBA",
+      "purchase_price": 0.7,
+      "lead_time_days": 3,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 11
+    },
+    {
+      "supplier_id": 4,
+      "product_id": 4,
+      "supplier_product_code": "UB-WTR-500",
+      "purchase_price": 9.2,
+      "lead_time_days": 2,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 12
+    },
+    {
+      "supplier_id": 4,
+      "product_id": 5,
+      "supplier_product_code": "UB-COLA-CAN",
+      "purchase_price": 16.5,
+      "lead_time_days": 2,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 13
+    },
+    {
+      "supplier_id": 4,
+      "product_id": 6,
+      "supplier_product_code": "UB-CHIP-60G",
+      "purchase_price": 20,
+      "lead_time_days": 2,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 14
+    }
+  ],
+  "purchase_orders": [
+    {
+      "id": 1,
+      "purchase_order_number": "PO-2026-0001",
+      "supplier_id": 1,
+      "requested_by": "EMP-002",
+      "approved_by": "EMP-001",
+      "order_date": "2026-11-01",
+      "expected_delivery_date": "2026-11-03",
+      "total_amount": 1550,
+      "status": "COMPLETED",
+      "remarks": "Initial stock replenishment for coffee and tea bases",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 2,
+      "purchase_order_number": "PO-2026-0002",
+      "supplier_id": 2,
+      "requested_by": "EMP-002",
+      "approved_by": "EMP-001",
+      "order_date": "2026-11-10",
+      "expected_delivery_date": "2026-11-12",
+      "total_amount": 2840,
+      "status": "COMPLETED",
+      "remarks": "Fresh dairy, cheese, and deli meats for sandwiches",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 3,
+      "purchase_order_number": "PO-2026-0003",
+      "supplier_id": 4,
+      "requested_by": "EMP-003",
+      "approved_by": "EMP-002",
+      "order_date": "2026-11-18",
+      "expected_delivery_date": "2026-11-20",
+      "total_amount": 1850,
+      "status": "PENDING APPROVAL",
+      "remarks": "Weekly beverage and snack replenishment",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    }
+  ],
+  "purchase_order_items": [
+    {
+      "id": 1,
+      "purchase_order_id": 1,
+      "product_id": 7,
+      "quantity_ordered": 5000,
+      "quantity_received": 5000,
+      "unit_cost": 0.23,
+      "subtotal": 1150,
+      "created_at": "2026-11-19T03:30:14.871Z"
+    },
+    {
+      "id": 2,
+      "purchase_order_id": 1,
+      "product_id": 9,
+      "quantity_ordered": 5000,
+      "quantity_received": 5000,
+      "unit_cost": 0.045,
+      "subtotal": 225,
+      "created_at": "2026-11-19T03:30:14.871Z"
+    },
+    {
+      "id": 3,
+      "purchase_order_id": 1,
+      "product_id": 17,
+      "quantity_ordered": 450,
+      "quantity_received": 450,
+      "unit_cost": 0.38,
+      "subtotal": 171,
+      "created_at": "2026-11-19T03:30:14.871Z"
+    },
+    {
+      "id": 4,
+      "purchase_order_id": 2,
+      "product_id": 8,
+      "quantity_ordered": 8000,
+      "quantity_received": 8000,
+      "unit_cost": 0.075,
+      "subtotal": 600,
+      "created_at": "2026-11-19T03:30:14.871Z"
+    },
+    {
+      "id": 5,
+      "purchase_order_id": 2,
+      "product_id": 13,
+      "quantity_ordered": 150,
+      "quantity_received": 150,
+      "unit_cost": 7.5,
+      "subtotal": 1125,
+      "created_at": "2026-11-19T03:30:14.871Z"
+    },
+    {
+      "id": 6,
+      "purchase_order_id": 2,
+      "product_id": 14,
+      "quantity_ordered": 150,
+      "quantity_received": 150,
+      "unit_cost": 5.6,
+      "subtotal": 840,
+      "created_at": "2026-11-19T03:30:14.871Z"
+    },
+    {
+      "id": 7,
+      "purchase_order_id": 3,
+      "product_id": 4,
+      "quantity_ordered": 100,
+      "quantity_received": 0,
+      "unit_cost": 9.2,
+      "subtotal": 920,
+      "created_at": "2026-11-19T03:30:14.871Z"
+    },
+    {
+      "id": 8,
+      "purchase_order_id": 3,
+      "product_id": 5,
+      "quantity_ordered": 50,
+      "quantity_received": 0,
+      "unit_cost": 16.5,
+      "subtotal": 825,
+      "created_at": "2026-11-19T03:30:14.871Z"
+    }
+  ],
+  "stock_batches": [
+    {
+      "id": "CRITICAL FEFO",
+      "created_at": "2026-11-19T03:30:14.871Z"
+    },
+    {
+      "id": 1,
+      "product_id": 8,
+      "batch_number": "BAT-MLK-202611-01",
+      "purchase_order_item_id": 4,
+      "quantity_received": 3000,
+      "remaining_quantity": 300,
+      "expiration_date": "2026-11-22",
+      "received_date": "2026-11-12",
+      "created_at": "2026-11-19T03:30:14.871Z",
+      "updated_at": "2026-11-19T04:03:24.024Z"
+    },
+    {
+      "id": 2,
+      "product_id": 8,
+      "batch_number": "BAT-MLK-202611-02",
+      "purchase_order_item_id": 4,
+      "quantity_received": 5000,
+      "remaining_quantity": 4500,
+      "expiration_date": "2026-12-05",
+      "received_date": "2026-11-15",
+      "created_at": "2026-11-19T03:30:14.871Z"
+    },
+    {
+      "id": 3,
+      "product_id": 7,
+      "batch_number": "BAT-COF-202611-01",
+      "purchase_order_item_id": 1,
+      "quantity_received": 5000,
+      "remaining_quantity": 2100,
+      "expiration_date": "2027-02-15",
+      "received_date": "2026-11-03",
+      "created_at": "2026-11-19T03:30:14.871Z",
+      "updated_at": "2026-11-19T04:03:24.022Z"
+    },
+    {
+      "id": 4,
+      "product_id": 13,
+      "batch_number": "BAT-HAM-202611-01",
+      "purchase_order_item_id": 5,
+      "quantity_received": 150,
+      "remaining_quantity": 80,
+      "expiration_date": "2026-11-28",
+      "received_date": "2026-11-12",
+      "created_at": "2026-11-19T03:30:14.871Z"
+    },
+    {
+      "id": 5,
+      "product_id": 14,
+      "batch_number": "BAT-CHS-202611-01",
+      "purchase_order_item_id": 6,
+      "quantity_received": 150,
+      "remaining_quantity": 75,
+      "expiration_date": "2026-12-20",
+      "received_date": "2026-11-12",
+      "created_at": "2026-11-19T03:30:14.871Z"
+    },
+    {
+      "id": 6,
+      "product_id": 4,
+      "batch_number": "BAT-WTR-202610-01",
+      "purchase_order_item_id": null,
+      "quantity_received": 150,
+      "remaining_quantity": 112,
+      "expiration_date": "2027-10-01",
+      "received_date": "2026-10-25",
+      "created_at": "2026-11-19T03:30:14.871Z",
+      "updated_at": "2026-11-19T04:03:24.017Z"
+    },
+    {
+      "id": 7,
+      "product_id": 6,
+      "batch_number": "BAT-CHP-202610-01",
+      "purchase_order_item_id": null,
+      "quantity_received": 60,
+      "remaining_quantity": 45,
+      "expiration_date": "2027-04-10",
+      "received_date": "2026-10-25",
+      "created_at": "2026-11-19T03:30:14.871Z"
+    },
+    {
+      "product_id": 4,
+      "batch_number": "BAT-TEST-WAC-1795059022385",
+      "quantity_received": 100,
+      "remaining_quantity": 100,
+      "expiration_date": null,
+      "received_date": "2026-11-19T03:30:22.386Z",
+      "created_at": "NOW(",
+      "id": null,
+      "updated_at": "2026-11-19T03:30:22.386Z"
+    },
+    {
+      "product_id": 4,
+      "batch_number": "BAT-TEST-WAC-1795060019133",
+      "quantity_received": 100,
+      "remaining_quantity": 100,
+      "expiration_date": null,
+      "received_date": "2026-11-19T03:46:59.134Z",
+      "created_at": "NOW(",
+      "id": null,
+      "updated_at": "2026-11-19T03:46:59.134Z"
+    },
+    {
+      "product_id": 4,
+      "batch_number": "BAT-TEST-WAC-1795060554300",
+      "quantity_received": 100,
+      "remaining_quantity": 100,
+      "expiration_date": null,
+      "received_date": "2026-11-19T03:55:54.301Z",
+      "created_at": "NOW(",
+      "id": null,
+      "updated_at": "2026-11-19T03:55:54.301Z"
+    },
+    {
+      "product_id": 4,
+      "batch_number": "BAT-TEST-WAC-1795061004031",
+      "quantity_received": 100,
+      "remaining_quantity": 100,
+      "expiration_date": null,
+      "received_date": "2026-11-19T04:03:24.032Z",
+      "created_at": "NOW(",
+      "id": null,
+      "updated_at": "2026-11-19T04:03:24.032Z"
+    }
+  ],
+  "inventory_transactions": [
+    {
+      "id": 1,
+      "transaction_number": "TXN-2026-0001",
+      "product_id": 7,
+      "transaction_type": "STOCK_IN",
+      "quantity": 5000,
+      "previous_stock": 0,
+      "new_stock": 5000,
+      "reference_type": "PURCHASE_ORDER",
+      "reference_id": "PO-2026-0001",
+      "employee_id": "EMP-003",
+      "remarks": "Initial PO receiving from Golden Roast",
+      "created_at": "2026-11-19T03:30:14.871Z"
+    },
+    {
+      "id": 2,
+      "transaction_number": "TXN-2026-0002",
+      "product_id": 8,
+      "transaction_type": "STOCK_IN",
+      "quantity": 8000,
+      "previous_stock": 0,
+      "new_stock": 8000,
+      "reference_type": "PURCHASE_ORDER",
+      "reference_id": "PO-2026-0002",
+      "employee_id": "EMP-003",
+      "remarks": "Milk delivery received and inspected",
+      "created_at": "2026-11-19T03:30:14.871Z"
+    },
+    {
+      "id": 3,
+      "transaction_number": "TXN-2026-0003",
+      "product_id": 4,
+      "transaction_type": "STOCK_IN",
+      "quantity": 150,
+      "previous_stock": 0,
+      "new_stock": 150,
+      "reference_type": "STOCK_IN",
+      "reference_id": "RECEIPT-099",
+      "employee_id": "EMP-003",
+      "remarks": "Mineral water delivery from Universal Dist",
+      "created_at": "2026-11-19T03:30:14.871Z"
+    },
+    {
+      "id": 4,
+      "transaction_number": "TXN-2026-0004",
+      "product_id": 4,
+      "transaction_type": "SALE",
+      "quantity": -30,
+      "previous_stock": 150,
+      "new_stock": 120,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "POS-TXN-1001",
+      "employee_id": "EMP-004",
+      "remarks": "Canteen cashier sales transaction",
+      "created_at": "2026-11-19T03:30:14.871Z"
+    },
+    {
+      "id": 5,
+      "transaction_number": "TXN-2026-0005",
+      "product_id": 8,
+      "transaction_type": "SALE",
+      "quantity": -2000,
+      "previous_stock": 8000,
+      "new_stock": 6000,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "POS-TXN-1002",
+      "employee_id": "EMP-004",
+      "remarks": "Deducted for Iced Coffee sales via Recipe BOM",
+      "created_at": "2026-11-19T03:30:14.871Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795059022369-10",
+      "product_id": 10,
+      "transaction_type": "SALE",
+      "quantity": -1,
+      "previous_stock": 350,
+      "new_stock": 349,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TEST-POS-1795059022366",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:30:22.369Z",
+      "id": 6,
+      "updated_at": "2026-11-19T03:30:22.369Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795059022370-11",
+      "product_id": 11,
+      "transaction_type": "SALE",
+      "quantity": -1,
+      "previous_stock": 350,
+      "new_stock": 349,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TEST-POS-1795059022366",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:30:22.370Z",
+      "id": 7,
+      "updated_at": "2026-11-19T03:30:22.370Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795059022371-7",
+      "product_id": 7,
+      "transaction_type": "SALE",
+      "quantity": -50,
+      "previous_stock": 2500,
+      "new_stock": 2450,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TEST-POS-1795059022366",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:30:22.371Z",
+      "id": 8,
+      "updated_at": "2026-11-19T03:30:22.371Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795059022372-8",
+      "product_id": 8,
+      "transaction_type": "SALE",
+      "quantity": -150,
+      "previous_stock": 6000,
+      "new_stock": 5850,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TEST-POS-1795059022366",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:30:22.372Z",
+      "id": 9,
+      "updated_at": "2026-11-19T03:30:22.372Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795059022373-9",
+      "product_id": 9,
+      "transaction_type": "SALE",
+      "quantity": -20,
+      "previous_stock": 3000,
+      "new_stock": 2980,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TEST-POS-1795059022366",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:30:22.373Z",
+      "id": 10,
+      "updated_at": "2026-11-19T03:30:22.373Z"
+    },
+    {
+      "transaction_number": "TXN-SALE-1795059022374-4",
+      "product_id": 4,
+      "transaction_type": "SALE",
+      "quantity": -2,
+      "previous_stock": 120,
+      "new_stock": 118,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TEST-POS-1795059022366",
+      "employee_id": "EMP-004",
+      "remarks": "Direct canteen sale for transaction TEST-POS-1795059022366",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:30:22.374Z",
+      "id": 11,
+      "updated_at": "2026-11-19T03:30:22.374Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795059022376-10",
+      "product_id": 10,
+      "transaction_type": "SALE",
+      "quantity": -1,
+      "previous_stock": 349,
+      "new_stock": 348,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TXN-DUP-1795059022375",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:30:22.377Z",
+      "id": 12,
+      "updated_at": "2026-11-19T03:30:22.377Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795059022377-11",
+      "product_id": 11,
+      "transaction_type": "SALE",
+      "quantity": -1,
+      "previous_stock": 349,
+      "new_stock": 348,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TXN-DUP-1795059022375",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:30:22.377Z",
+      "id": 13,
+      "updated_at": "2026-11-19T03:30:22.377Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795059022378-7",
+      "product_id": 7,
+      "transaction_type": "SALE",
+      "quantity": -50,
+      "previous_stock": 2450,
+      "new_stock": 2400,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TXN-DUP-1795059022375",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:30:22.378Z",
+      "id": 14,
+      "updated_at": "2026-11-19T03:30:22.378Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795059022379-8",
+      "product_id": 8,
+      "transaction_type": "SALE",
+      "quantity": -150,
+      "previous_stock": 5850,
+      "new_stock": 5700,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TXN-DUP-1795059022375",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:30:22.379Z",
+      "id": 15,
+      "updated_at": "2026-11-19T03:30:22.379Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795059022380-9",
+      "product_id": 9,
+      "transaction_type": "SALE",
+      "quantity": -20,
+      "previous_stock": 2980,
+      "new_stock": 2960,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TXN-DUP-1795059022375",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:30:22.380Z",
+      "id": 16,
+      "updated_at": "2026-11-19T03:30:22.380Z"
+    },
+    {
+      "transaction_number": "TXN-IN-1795059022386-978",
+      "product_id": 4,
+      "transaction_type": "STOCK_IN",
+      "quantity": 100,
+      "previous_stock": 118,
+      "new_stock": 218,
+      "reference_type": "MANUAL_STOCK_IN",
+      "reference_id": null,
+      "employee_id": "EMP-003",
+      "remarks": "WAC Valuation test",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:30:22.386Z",
+      "id": 17,
+      "updated_at": "2026-11-19T03:30:22.386Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795060019115-10",
+      "product_id": 10,
+      "transaction_type": "SALE",
+      "quantity": -1,
+      "previous_stock": 348,
+      "new_stock": 347,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TEST-POS-1795060019112",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:46:59.115Z",
+      "id": 18,
+      "updated_at": "2026-11-19T03:46:59.115Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795060019116-11",
+      "product_id": 11,
+      "transaction_type": "SALE",
+      "quantity": -1,
+      "previous_stock": 348,
+      "new_stock": 347,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TEST-POS-1795060019112",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:46:59.116Z",
+      "id": 19,
+      "updated_at": "2026-11-19T03:46:59.116Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795060019117-7",
+      "product_id": 7,
+      "transaction_type": "SALE",
+      "quantity": -50,
+      "previous_stock": 2400,
+      "new_stock": 2350,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TEST-POS-1795060019112",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:46:59.117Z",
+      "id": 20,
+      "updated_at": "2026-11-19T03:46:59.117Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795060019119-8",
+      "product_id": 8,
+      "transaction_type": "SALE",
+      "quantity": -150,
+      "previous_stock": 5700,
+      "new_stock": 5550,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TEST-POS-1795060019112",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:46:59.119Z",
+      "id": 21,
+      "updated_at": "2026-11-19T03:46:59.119Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795060019120-9",
+      "product_id": 9,
+      "transaction_type": "SALE",
+      "quantity": -20,
+      "previous_stock": 2960,
+      "new_stock": 2940,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TEST-POS-1795060019112",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:46:59.120Z",
+      "id": 22,
+      "updated_at": "2026-11-19T03:46:59.120Z"
+    },
+    {
+      "transaction_number": "TXN-SALE-1795060019121-4",
+      "product_id": 4,
+      "transaction_type": "SALE",
+      "quantity": -2,
+      "previous_stock": 218,
+      "new_stock": 216,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TEST-POS-1795060019112",
+      "employee_id": "EMP-004",
+      "remarks": "Direct canteen sale for transaction TEST-POS-1795060019112",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:46:59.121Z",
+      "id": 23,
+      "updated_at": "2026-11-19T03:46:59.121Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795060019124-10",
+      "product_id": 10,
+      "transaction_type": "SALE",
+      "quantity": -1,
+      "previous_stock": 347,
+      "new_stock": 346,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TXN-DUP-1795060019123",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:46:59.124Z",
+      "id": 24,
+      "updated_at": "2026-11-19T03:46:59.124Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795060019125-11",
+      "product_id": 11,
+      "transaction_type": "SALE",
+      "quantity": -1,
+      "previous_stock": 347,
+      "new_stock": 346,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TXN-DUP-1795060019123",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:46:59.125Z",
+      "id": 25,
+      "updated_at": "2026-11-19T03:46:59.125Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795060019126-7",
+      "product_id": 7,
+      "transaction_type": "SALE",
+      "quantity": -50,
+      "previous_stock": 2350,
+      "new_stock": 2300,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TXN-DUP-1795060019123",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:46:59.126Z",
+      "id": 26,
+      "updated_at": "2026-11-19T03:46:59.126Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795060019127-8",
+      "product_id": 8,
+      "transaction_type": "SALE",
+      "quantity": -150,
+      "previous_stock": 5550,
+      "new_stock": 5400,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TXN-DUP-1795060019123",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:46:59.127Z",
+      "id": 27,
+      "updated_at": "2026-11-19T03:46:59.127Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795060019127-9",
+      "product_id": 9,
+      "transaction_type": "SALE",
+      "quantity": -20,
+      "previous_stock": 2940,
+      "new_stock": 2920,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TXN-DUP-1795060019123",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:46:59.127Z",
+      "id": 28,
+      "updated_at": "2026-11-19T03:46:59.127Z"
+    },
+    {
+      "transaction_number": "TXN-IN-1795060019134-435",
+      "product_id": 4,
+      "transaction_type": "STOCK_IN",
+      "quantity": 100,
+      "previous_stock": 216,
+      "new_stock": 316,
+      "reference_type": "MANUAL_STOCK_IN",
+      "reference_id": null,
+      "employee_id": "EMP-003",
+      "remarks": "WAC Valuation test",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:46:59.134Z",
+      "id": 29,
+      "updated_at": "2026-11-19T03:46:59.134Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795060554282-10",
+      "product_id": 10,
+      "transaction_type": "SALE",
+      "quantity": -1,
+      "previous_stock": 346,
+      "new_stock": 345,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TEST-POS-1795060554279",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:55:54.282Z",
+      "id": 30,
+      "updated_at": "2026-11-19T03:55:54.282Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795060554283-11",
+      "product_id": 11,
+      "transaction_type": "SALE",
+      "quantity": -1,
+      "previous_stock": 346,
+      "new_stock": 345,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TEST-POS-1795060554279",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:55:54.283Z",
+      "id": 31,
+      "updated_at": "2026-11-19T03:55:54.283Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795060554284-7",
+      "product_id": 7,
+      "transaction_type": "SALE",
+      "quantity": -50,
+      "previous_stock": 2300,
+      "new_stock": 2250,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TEST-POS-1795060554279",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:55:54.284Z",
+      "id": 32,
+      "updated_at": "2026-11-19T03:55:54.284Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795060554286-8",
+      "product_id": 8,
+      "transaction_type": "SALE",
+      "quantity": -150,
+      "previous_stock": 5400,
+      "new_stock": 5250,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TEST-POS-1795060554279",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:55:54.286Z",
+      "id": 33,
+      "updated_at": "2026-11-19T03:55:54.286Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795060554286-9",
+      "product_id": 9,
+      "transaction_type": "SALE",
+      "quantity": -20,
+      "previous_stock": 2920,
+      "new_stock": 2900,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TEST-POS-1795060554279",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:55:54.286Z",
+      "id": 34,
+      "updated_at": "2026-11-19T03:55:54.286Z"
+    },
+    {
+      "transaction_number": "TXN-SALE-1795060554288-4",
+      "product_id": 4,
+      "transaction_type": "SALE",
+      "quantity": -2,
+      "previous_stock": 316,
+      "new_stock": 314,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TEST-POS-1795060554279",
+      "employee_id": "EMP-004",
+      "remarks": "Direct canteen sale for transaction TEST-POS-1795060554279",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:55:54.288Z",
+      "id": 35,
+      "updated_at": "2026-11-19T03:55:54.288Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795060554291-10",
+      "product_id": 10,
+      "transaction_type": "SALE",
+      "quantity": -1,
+      "previous_stock": 345,
+      "new_stock": 344,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TXN-DUP-1795060554290",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:55:54.291Z",
+      "id": 36,
+      "updated_at": "2026-11-19T03:55:54.291Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795060554292-11",
+      "product_id": 11,
+      "transaction_type": "SALE",
+      "quantity": -1,
+      "previous_stock": 345,
+      "new_stock": 344,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TXN-DUP-1795060554290",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:55:54.292Z",
+      "id": 37,
+      "updated_at": "2026-11-19T03:55:54.292Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795060554293-7",
+      "product_id": 7,
+      "transaction_type": "SALE",
+      "quantity": -50,
+      "previous_stock": 2250,
+      "new_stock": 2200,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TXN-DUP-1795060554290",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:55:54.293Z",
+      "id": 38,
+      "updated_at": "2026-11-19T03:55:54.293Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795060554294-8",
+      "product_id": 8,
+      "transaction_type": "SALE",
+      "quantity": -150,
+      "previous_stock": 5250,
+      "new_stock": 5100,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TXN-DUP-1795060554290",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:55:54.294Z",
+      "id": 39,
+      "updated_at": "2026-11-19T03:55:54.294Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795060554295-9",
+      "product_id": 9,
+      "transaction_type": "SALE",
+      "quantity": -20,
+      "previous_stock": 2900,
+      "new_stock": 2880,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TXN-DUP-1795060554290",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:55:54.295Z",
+      "id": 40,
+      "updated_at": "2026-11-19T03:55:54.295Z"
+    },
+    {
+      "transaction_number": "TXN-IN-1795060554301-303",
+      "product_id": 4,
+      "transaction_type": "STOCK_IN",
+      "quantity": 100,
+      "previous_stock": 314,
+      "new_stock": 414,
+      "reference_type": "MANUAL_STOCK_IN",
+      "reference_id": null,
+      "employee_id": "EMP-003",
+      "remarks": "WAC Valuation test",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T03:55:54.301Z",
+      "id": 41,
+      "updated_at": "2026-11-19T03:55:54.301Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795061004011-10",
+      "product_id": 10,
+      "transaction_type": "SALE",
+      "quantity": -1,
+      "previous_stock": 344,
+      "new_stock": 343,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TEST-POS-1795061004008",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T04:03:24.011Z",
+      "id": 42,
+      "updated_at": "2026-11-19T04:03:24.011Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795061004012-11",
+      "product_id": 11,
+      "transaction_type": "SALE",
+      "quantity": -1,
+      "previous_stock": 344,
+      "new_stock": 343,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TEST-POS-1795061004008",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T04:03:24.012Z",
+      "id": 43,
+      "updated_at": "2026-11-19T04:03:24.012Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795061004014-7",
+      "product_id": 7,
+      "transaction_type": "SALE",
+      "quantity": -50,
+      "previous_stock": 2200,
+      "new_stock": 2150,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TEST-POS-1795061004008",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T04:03:24.014Z",
+      "id": 44,
+      "updated_at": "2026-11-19T04:03:24.014Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795061004015-8",
+      "product_id": 8,
+      "transaction_type": "SALE",
+      "quantity": -150,
+      "previous_stock": 5100,
+      "new_stock": 4950,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TEST-POS-1795061004008",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T04:03:24.015Z",
+      "id": 45,
+      "updated_at": "2026-11-19T04:03:24.015Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795061004016-9",
+      "product_id": 9,
+      "transaction_type": "SALE",
+      "quantity": -20,
+      "previous_stock": 2880,
+      "new_stock": 2860,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TEST-POS-1795061004008",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T04:03:24.016Z",
+      "id": 46,
+      "updated_at": "2026-11-19T04:03:24.016Z"
+    },
+    {
+      "transaction_number": "TXN-SALE-1795061004017-4",
+      "product_id": 4,
+      "transaction_type": "SALE",
+      "quantity": -2,
+      "previous_stock": 414,
+      "new_stock": 412,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TEST-POS-1795061004008",
+      "employee_id": "EMP-004",
+      "remarks": "Direct canteen sale for transaction TEST-POS-1795061004008",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T04:03:24.017Z",
+      "id": 47,
+      "updated_at": "2026-11-19T04:03:24.017Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795061004021-10",
+      "product_id": 10,
+      "transaction_type": "SALE",
+      "quantity": -1,
+      "previous_stock": 343,
+      "new_stock": 342,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TXN-DUP-1795061004019",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T04:03:24.021Z",
+      "id": 48,
+      "updated_at": "2026-11-19T04:03:24.021Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795061004021-11",
+      "product_id": 11,
+      "transaction_type": "SALE",
+      "quantity": -1,
+      "previous_stock": 343,
+      "new_stock": 342,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TXN-DUP-1795061004019",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T04:03:24.021Z",
+      "id": 49,
+      "updated_at": "2026-11-19T04:03:24.021Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795061004023-7",
+      "product_id": 7,
+      "transaction_type": "SALE",
+      "quantity": -50,
+      "previous_stock": 2150,
+      "new_stock": 2100,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TXN-DUP-1795061004019",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T04:03:24.023Z",
+      "id": 50,
+      "updated_at": "2026-11-19T04:03:24.023Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795061004024-8",
+      "product_id": 8,
+      "transaction_type": "SALE",
+      "quantity": -150,
+      "previous_stock": 4950,
+      "new_stock": 4800,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TXN-DUP-1795061004019",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T04:03:24.024Z",
+      "id": 51,
+      "updated_at": "2026-11-19T04:03:24.024Z"
+    },
+    {
+      "transaction_number": "TXN-RECIPE-1795061004025-9",
+      "product_id": 9,
+      "transaction_type": "SALE",
+      "quantity": -20,
+      "previous_stock": 2860,
+      "new_stock": 2840,
+      "reference_type": "CANTEEN_SALE",
+      "reference_id": "TXN-DUP-1795061004019",
+      "employee_id": "EMP-004",
+      "remarks": "Ingredient deduction for 1x Signature Iced Coffee (Standard Iced Coffee Recipe)",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T04:03:24.025Z",
+      "id": 52,
+      "updated_at": "2026-11-19T04:03:24.025Z"
+    },
+    {
+      "transaction_number": "TXN-IN-1795061004032-284",
+      "product_id": 4,
+      "transaction_type": "STOCK_IN",
+      "quantity": 100,
+      "previous_stock": 412,
+      "new_stock": 512,
+      "reference_type": "MANUAL_STOCK_IN",
+      "reference_id": null,
+      "employee_id": "EMP-003",
+      "remarks": "WAC Valuation test",
+      "transaction_date": "NOW(",
+      "created_at": "2026-11-19T04:03:24.032Z",
+      "id": 53,
+      "updated_at": "2026-11-19T04:03:24.032Z"
+    }
+  ],
+  "stock_adjustments": [],
+  "product_recipes": [
+    {
+      "id": 1,
+      "finished_product_id": 1,
+      "recipe_name": "Standard Iced Coffee Recipe",
+      "serving_size": 1,
+      "status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 2,
+      "finished_product_id": 2,
+      "recipe_name": "Deluxe Club Sandwich Recipe",
+      "serving_size": 1,
+      "status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    },
+    {
+      "id": 3,
+      "finished_product_id": 3,
+      "recipe_name": "Classic Milk Tea Recipe",
+      "serving_size": 1,
+      "status": "ACTIVE",
+      "created_at": "2026-11-19T03:30:14.870Z"
+    }
+  ],
+  "product_recipe_items": [
+    {
+      "recipe_id": 1,
+      "ingredient_product_id": 10,
+      "quantity_required": 1,
+      "unit_id": 1,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 1
+    },
+    {
+      "recipe_id": 1,
+      "ingredient_product_id": 11,
+      "quantity_required": 1,
+      "unit_id": 1,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 2
+    },
+    {
+      "recipe_id": 1,
+      "ingredient_product_id": 7,
+      "quantity_required": 50,
+      "unit_id": 5,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 3
+    },
+    {
+      "recipe_id": 1,
+      "ingredient_product_id": 8,
+      "quantity_required": 150,
+      "unit_id": 5,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 4
+    },
+    {
+      "recipe_id": 1,
+      "ingredient_product_id": 9,
+      "quantity_required": 20,
+      "unit_id": 5,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 5
+    },
+    {
+      "recipe_id": "2 bread",
+      "ingredient_product_id": "2 ham",
+      "quantity_required": "1 cheese",
+      "unit_id": "15g mayo",
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 6
+    },
+    {
+      "recipe_id": 2,
+      "ingredient_product_id": 12,
+      "quantity_required": 2,
+      "unit_id": 1,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 7
+    },
+    {
+      "recipe_id": 2,
+      "ingredient_product_id": 13,
+      "quantity_required": 2,
+      "unit_id": 1,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 8
+    },
+    {
+      "recipe_id": 2,
+      "ingredient_product_id": 14,
+      "quantity_required": 1,
+      "unit_id": 1,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 9
+    },
+    {
+      "recipe_id": 2,
+      "ingredient_product_id": 15,
+      "quantity_required": 15,
+      "unit_id": 3,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 10
+    },
+    {
+      "recipe_id": "1 cup",
+      "ingredient_product_id": "1 lid",
+      "quantity_required": "1 straw",
+      "unit_id": "20g tea",
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 11
+    },
+    {
+      "recipe_id": 3,
+      "ingredient_product_id": 10,
+      "quantity_required": 1,
+      "unit_id": 1,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 12
+    },
+    {
+      "recipe_id": 3,
+      "ingredient_product_id": 11,
+      "quantity_required": 1,
+      "unit_id": 1,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 13
+    },
+    {
+      "recipe_id": 3,
+      "ingredient_product_id": 16,
+      "quantity_required": 1,
+      "unit_id": 1,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 14
+    },
+    {
+      "recipe_id": 3,
+      "ingredient_product_id": 17,
+      "quantity_required": 20,
+      "unit_id": 3,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 15
+    },
+    {
+      "recipe_id": 3,
+      "ingredient_product_id": 8,
+      "quantity_required": 100,
+      "unit_id": 5,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 16
+    },
+    {
+      "recipe_id": 3,
+      "ingredient_product_id": 18,
+      "quantity_required": 30,
+      "unit_id": 3,
+      "created_at": "2026-11-19T03:30:14.870Z",
+      "id": 17
+    }
+  ],
+  "stock_transfers": [],
+  "stock_transfer_items": [],
+  "inventory_notifications": [
+    {
+      "id": 1,
+      "notification_type": "EXPIRING_SOON",
+      "product_id": 8,
+      "message": "Fresh Whole Milk Batch BAT-MLK-202611-01 expires in 3 days! FEFO will prioritize this batch.",
+      "priority": "HIGH",
+      "status": "UNREAD",
+      "created_at": "2026-11-19T03:30:14.871Z"
+    },
+    {
+      "id": 2,
+      "notification_type": "PO_APPROVAL",
+      "product_id": null,
+      "message": "Purchase Order PO-2026-0003 requires review and approval from Inventory Manager.",
+      "priority": "MEDIUM",
+      "status": "UNREAD",
+      "created_at": "2026-11-19T03:30:14.871Z"
+    },
+    {
+      "id": 3,
+      "notification_type": "LOW_STOCK",
+      "product_id": 20,
+      "message": "Thermal Receipt Paper 80mm current stock (25 rolls",
+      "created_at": "2026-11-19T03:30:14.871Z"
+    },
+    {
+      "id": "15 rolls",
+      "created_at": "2026-11-19T03:30:14.871Z"
+    }
+  ],
+  "activity_logs": [
+    {
+      "employee_id": "EMP-001",
+      "action": "SYSTEM_INITIALIZATION",
+      "module": "SYSTEM",
+      "description": "Integrated management system initialized with schema v1.0",
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-11-19T03:30:14.871Z",
+      "id": 1
+    },
+    {
+      "employee_id": "EMP-002",
+      "action": "PURCHASE_ORDER_CREATED",
+      "module": "PURCHASE_ORDERS",
+      "description": "Created PO-2026-0001 for Golden Roast Coffee Roasters",
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-11-19T03:30:14.871Z",
+      "id": 2
+    },
+    {
+      "employee_id": "EMP-003",
+      "action": "STOCK_IN_PROCESSED",
+      "module": "INVENTORY",
+      "description": "Received 8000ml Milk under PO-2026-0002",
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-11-19T03:30:14.871Z",
+      "id": 3
+    },
+    {
+      "employee_id": "EMP-004",
+      "action": "CANTEEN_POS_LOGIN",
+      "module": "POS",
+      "description": "Cashier Elena Rostova logged into POS Terminal 01",
+      "ip_address": "127.0.0.1",
+      "created_at": "2026-11-19T03:30:14.871Z",
+      "id": 4
+    },
+    {
+      "employee_id": "EMP-004",
+      "action": "CANTEEN_SALE_PROCESSED",
+      "module": "POS_INTEGRATION",
+      "description": "POS sale TEST-POS-1795059022366 completed: 2 items sold",
+      "ip_address": "127.0.0.1",
+      "created_at": "NOW(",
+      "id": 5,
+      "updated_at": "2026-11-19T03:30:22.375Z"
+    },
+    {
+      "employee_id": "EMP-004",
+      "action": "CANTEEN_SALE_PROCESSED",
+      "module": "POS_INTEGRATION",
+      "description": "POS sale TXN-DUP-1795059022375 completed: 1 items sold",
+      "ip_address": "127.0.0.1",
+      "created_at": "NOW(",
+      "id": 6,
+      "updated_at": "2026-11-19T03:30:22.381Z"
+    },
+    {
+      "employee_id": "EMP-004",
+      "action": "CANTEEN_SALE_FAILED",
+      "module": "POS_INTEGRATION",
+      "description": "POS sale TXN-FAIL-1795059022381 failed: Insufficient stock for 'Bottled Mineral Water 500ml'. Available: 118, Requested: 999999.",
+      "ip_address": "127.0.0.1",
+      "created_at": "NOW(",
+      "id": 7,
+      "updated_at": "2026-11-19T03:30:22.382Z"
+    },
+    {
+      "employee_id": "SYSTEM",
+      "action": "EMPLOYEE_SYNC_CREATED",
+      "module": "EMPLOYEE_INTEGRATION",
+      "description": "Created new employee account for EMP-TEST-99 via EMS synchronization.",
+      "ip_address": "127.0.0.1",
+      "created_at": "NOW(",
+      "id": 8,
+      "updated_at": "2026-11-19T03:30:22.383Z"
+    },
+    {
+      "employee_id": "SYSTEM",
+      "action": "EMPLOYEE_SYNC_UPDATED",
+      "module": "EMPLOYEE_INTEGRATION",
+      "description": "Synchronized employee EMP-TEST-99 (Test Officer). Status: INACTIVE",
+      "ip_address": "127.0.0.1",
+      "created_at": "NOW(",
+      "id": 9,
+      "updated_at": "2026-11-19T03:30:22.384Z"
+    },
+    {
+      "employee_id": "EMP-003",
+      "action": "STOCK_IN",
+      "module": "INVENTORY",
+      "description": "Stock-in of 100 units for PRD-BEV-003. New stock: 218",
+      "ip_address": "127.0.0.1",
+      "created_at": "NOW(",
+      "id": 10,
+      "updated_at": "2026-11-19T03:30:22.387Z"
+    },
+    {
+      "employee_id": "EMP-004",
+      "action": "CANTEEN_SALE_PROCESSED",
+      "module": "POS_INTEGRATION",
+      "description": "POS sale TEST-POS-1795060019112 completed: 2 items sold",
+      "ip_address": "127.0.0.1",
+      "created_at": "NOW(",
+      "id": 11,
+      "updated_at": "2026-11-19T03:46:59.122Z"
+    },
+    {
+      "employee_id": "EMP-004",
+      "action": "CANTEEN_SALE_PROCESSED",
+      "module": "POS_INTEGRATION",
+      "description": "POS sale TXN-DUP-1795060019123 completed: 1 items sold",
+      "ip_address": "127.0.0.1",
+      "created_at": "NOW(",
+      "id": 12,
+      "updated_at": "2026-11-19T03:46:59.129Z"
+    },
+    {
+      "employee_id": "EMP-004",
+      "action": "CANTEEN_SALE_FAILED",
+      "module": "POS_INTEGRATION",
+      "description": "POS sale TXN-FAIL-1795060019129 failed: Insufficient stock for 'Bottled Mineral Water 500ml'. Available: 216, Requested: 999999.",
+      "ip_address": "127.0.0.1",
+      "created_at": "NOW(",
+      "id": 13,
+      "updated_at": "2026-11-19T03:46:59.130Z"
+    },
+    {
+      "employee_id": "SYSTEM",
+      "action": "EMPLOYEE_SYNC_UPDATED",
+      "module": "EMPLOYEE_INTEGRATION",
+      "description": "Synchronized employee EMP-TEST-99 (Test Officer). Status: ACTIVE",
+      "ip_address": "127.0.0.1",
+      "created_at": "NOW(",
+      "id": 14,
+      "updated_at": "2026-11-19T03:46:59.131Z"
+    },
+    {
+      "employee_id": "SYSTEM",
+      "action": "EMPLOYEE_SYNC_UPDATED",
+      "module": "EMPLOYEE_INTEGRATION",
+      "description": "Synchronized employee EMP-TEST-99 (Test Officer). Status: INACTIVE",
+      "ip_address": "127.0.0.1",
+      "created_at": "NOW(",
+      "id": 15,
+      "updated_at": "2026-11-19T03:46:59.132Z"
+    },
+    {
+      "employee_id": "EMP-003",
+      "action": "STOCK_IN",
+      "module": "INVENTORY",
+      "description": "Stock-in of 100 units for PRD-BEV-003. New stock: 316",
+      "ip_address": "127.0.0.1",
+      "created_at": "NOW(",
+      "id": 16,
+      "updated_at": "2026-11-19T03:46:59.135Z"
+    },
+    {
+      "employee_id": "EMP-004",
+      "action": "CANTEEN_SALE_PROCESSED",
+      "module": "POS_INTEGRATION",
+      "description": "POS sale TEST-POS-1795060554279 completed: 2 items sold",
+      "ip_address": "127.0.0.1",
+      "created_at": "NOW(",
+      "id": 17,
+      "updated_at": "2026-11-19T03:55:54.289Z"
+    },
+    {
+      "employee_id": "EMP-004",
+      "action": "CANTEEN_SALE_PROCESSED",
+      "module": "POS_INTEGRATION",
+      "description": "POS sale TXN-DUP-1795060554290 completed: 1 items sold",
+      "ip_address": "127.0.0.1",
+      "created_at": "NOW(",
+      "id": 18,
+      "updated_at": "2026-11-19T03:55:54.296Z"
+    },
+    {
+      "employee_id": "EMP-004",
+      "action": "CANTEEN_SALE_FAILED",
+      "module": "POS_INTEGRATION",
+      "description": "POS sale TXN-FAIL-1795060554296 failed: Insufficient stock for 'Bottled Mineral Water 500ml'. Available: 314, Requested: 999999.",
+      "ip_address": "127.0.0.1",
+      "created_at": "NOW(",
+      "id": 19,
+      "updated_at": "2026-11-19T03:55:54.297Z"
+    },
+    {
+      "employee_id": "SYSTEM",
+      "action": "EMPLOYEE_SYNC_UPDATED",
+      "module": "EMPLOYEE_INTEGRATION",
+      "description": "Synchronized employee EMP-TEST-99 (Test Officer). Status: ACTIVE",
+      "ip_address": "127.0.0.1",
+      "created_at": "NOW(",
+      "id": 20,
+      "updated_at": "2026-11-19T03:55:54.299Z"
+    },
+    {
+      "employee_id": "SYSTEM",
+      "action": "EMPLOYEE_SYNC_UPDATED",
+      "module": "EMPLOYEE_INTEGRATION",
+      "description": "Synchronized employee EMP-TEST-99 (Test Officer). Status: INACTIVE",
+      "ip_address": "127.0.0.1",
+      "created_at": "NOW(",
+      "id": 21,
+      "updated_at": "2026-11-19T03:55:54.300Z"
+    },
+    {
+      "employee_id": "EMP-003",
+      "action": "STOCK_IN",
+      "module": "INVENTORY",
+      "description": "Stock-in of 100 units for PRD-BEV-003. New stock: 414",
+      "ip_address": "127.0.0.1",
+      "created_at": "NOW(",
+      "id": 22,
+      "updated_at": "2026-11-19T03:55:54.302Z"
+    },
+    {
+      "employee_id": "EMP-004",
+      "action": "CANTEEN_SALE_PROCESSED",
+      "module": "POS_INTEGRATION",
+      "description": "POS sale TEST-POS-1795061004008 completed: 2 items sold",
+      "ip_address": "127.0.0.1",
+      "created_at": "NOW(",
+      "id": 23,
+      "updated_at": "2026-11-19T04:03:24.019Z"
+    },
+    {
+      "employee_id": "EMP-004",
+      "action": "CANTEEN_SALE_PROCESSED",
+      "module": "POS_INTEGRATION",
+      "description": "POS sale TXN-DUP-1795061004019 completed: 1 items sold",
+      "ip_address": "127.0.0.1",
+      "created_at": "NOW(",
+      "id": 24,
+      "updated_at": "2026-11-19T04:03:24.026Z"
+    },
+    {
+      "employee_id": "EMP-004",
+      "action": "CANTEEN_SALE_FAILED",
+      "module": "POS_INTEGRATION",
+      "description": "POS sale TXN-FAIL-1795061004026 failed: Insufficient stock for 'Bottled Mineral Water 500ml'. Available: 412, Requested: 999999.",
+      "ip_address": "127.0.0.1",
+      "created_at": "NOW(",
+      "id": 25,
+      "updated_at": "2026-11-19T04:03:24.028Z"
+    },
+    {
+      "employee_id": "SYSTEM",
+      "action": "EMPLOYEE_SYNC_UPDATED",
+      "module": "EMPLOYEE_INTEGRATION",
+      "description": "Synchronized employee EMP-TEST-99 (Test Officer). Status: ACTIVE",
+      "ip_address": "127.0.0.1",
+      "created_at": "NOW(",
+      "id": 26,
+      "updated_at": "2026-11-19T04:03:24.029Z"
+    },
+    {
+      "employee_id": "SYSTEM",
+      "action": "EMPLOYEE_SYNC_UPDATED",
+      "module": "EMPLOYEE_INTEGRATION",
+      "description": "Synchronized employee EMP-TEST-99 (Test Officer). Status: INACTIVE",
+      "ip_address": "127.0.0.1",
+      "created_at": "NOW(",
+      "id": 27,
+      "updated_at": "2026-11-19T04:03:24.030Z"
+    },
+    {
+      "employee_id": "EMP-003",
+      "action": "STOCK_IN",
+      "module": "INVENTORY",
+      "description": "Stock-in of 100 units for PRD-BEV-003. New stock: 512",
+      "ip_address": "127.0.0.1",
+      "created_at": "NOW(",
+      "id": 28,
+      "updated_at": "2026-11-19T04:03:24.033Z"
+    }
+  ],
+  "integration_events": [
+    {
+      "source_system": "CANTEEN_POS",
+      "event_type": "SALE_COMPLETED",
+      "reference_id": "TEST-POS-1795059022366",
+      "idempotency_key": "IDEMP-TEST-1795059022366",
+      "payload": "{\"transaction_id\":\"TEST-POS-1795059022366\",\"cashier_employee_id\":\"EMP-004\",\"idempotency_key\":\"IDEMP-TEST-1795059022366\",\"items\":[{\"product_id\":1,\"quantity\":1,\"unit_price\":75},{\"product_id\":4,\"quantity\":2,\"unit_price\":20}],\"total_amount\":115}",
+      "processing_status": "PROCESSED",
+      "created_at": "NOW(",
+      "id": 1,
+      "updated_at": "2026-11-19T03:30:22.374Z",
+      "processed_at": "2026-11-19T03:30:22.374Z"
+    },
+    {
+      "source_system": "CANTEEN_POS",
+      "event_type": "SALE_COMPLETED",
+      "reference_id": "TXN-DUP-1795059022375",
+      "idempotency_key": "IDEMP-STRICT-1795059022375",
+      "payload": "{\"transaction_id\":\"TXN-DUP-1795059022375\",\"cashier_employee_id\":\"EMP-004\",\"idempotency_key\":\"IDEMP-STRICT-1795059022375\",\"items\":[{\"product_id\":1,\"quantity\":1,\"unit_price\":75}]}",
+      "processing_status": "PROCESSED",
+      "created_at": "NOW(",
+      "id": 2,
+      "updated_at": "2026-11-19T03:30:22.380Z",
+      "processed_at": "2026-11-19T03:30:22.380Z"
+    },
+    {
+      "source_system": "CANTEEN_POS",
+      "event_type": "SALE_COMPLETED",
+      "reference_id": "TEST-POS-1795060019112",
+      "idempotency_key": "IDEMP-TEST-1795060019112",
+      "payload": "{\"transaction_id\":\"TEST-POS-1795060019112\",\"cashier_employee_id\":\"EMP-004\",\"idempotency_key\":\"IDEMP-TEST-1795060019112\",\"items\":[{\"product_id\":1,\"quantity\":1,\"unit_price\":75},{\"product_id\":4,\"quantity\":2,\"unit_price\":20}],\"total_amount\":115}",
+      "processing_status": "PROCESSED",
+      "created_at": "NOW(",
+      "id": 3,
+      "updated_at": "2026-11-19T03:46:59.121Z",
+      "processed_at": "2026-11-19T03:46:59.121Z"
+    },
+    {
+      "source_system": "CANTEEN_POS",
+      "event_type": "SALE_COMPLETED",
+      "reference_id": "TXN-DUP-1795060019123",
+      "idempotency_key": "IDEMP-STRICT-1795060019123",
+      "payload": "{\"transaction_id\":\"TXN-DUP-1795060019123\",\"cashier_employee_id\":\"EMP-004\",\"idempotency_key\":\"IDEMP-STRICT-1795060019123\",\"items\":[{\"product_id\":1,\"quantity\":1,\"unit_price\":75}]}",
+      "processing_status": "PROCESSED",
+      "created_at": "NOW(",
+      "id": 4,
+      "updated_at": "2026-11-19T03:46:59.128Z",
+      "processed_at": "2026-11-19T03:46:59.128Z"
+    },
+    {
+      "source_system": "CANTEEN_POS",
+      "event_type": "SALE_COMPLETED",
+      "reference_id": "TEST-POS-1795060554279",
+      "idempotency_key": "IDEMP-TEST-1795060554279",
+      "payload": "{\"transaction_id\":\"TEST-POS-1795060554279\",\"cashier_employee_id\":\"EMP-004\",\"idempotency_key\":\"IDEMP-TEST-1795060554279\",\"items\":[{\"product_id\":1,\"quantity\":1,\"unit_price\":75},{\"product_id\":4,\"quantity\":2,\"unit_price\":20}],\"total_amount\":115}",
+      "processing_status": "PROCESSED",
+      "created_at": "NOW(",
+      "id": 5,
+      "updated_at": "2026-11-19T03:55:54.288Z",
+      "processed_at": "2026-11-19T03:55:54.288Z"
+    },
+    {
+      "source_system": "CANTEEN_POS",
+      "event_type": "SALE_COMPLETED",
+      "reference_id": "TXN-DUP-1795060554290",
+      "idempotency_key": "IDEMP-STRICT-1795060554290",
+      "payload": "{\"transaction_id\":\"TXN-DUP-1795060554290\",\"cashier_employee_id\":\"EMP-004\",\"idempotency_key\":\"IDEMP-STRICT-1795060554290\",\"items\":[{\"product_id\":1,\"quantity\":1,\"unit_price\":75}]}",
+      "processing_status": "PROCESSED",
+      "created_at": "NOW(",
+      "id": 6,
+      "updated_at": "2026-11-19T03:55:54.295Z",
+      "processed_at": "2026-11-19T03:55:54.295Z"
+    },
+    {
+      "source_system": "CANTEEN_POS",
+      "event_type": "SALE_COMPLETED",
+      "reference_id": "TEST-POS-1795061004008",
+      "idempotency_key": "IDEMP-TEST-1795061004008",
+      "payload": "{\"transaction_id\":\"TEST-POS-1795061004008\",\"cashier_employee_id\":\"EMP-004\",\"idempotency_key\":\"IDEMP-TEST-1795061004008\",\"items\":[{\"product_id\":1,\"quantity\":1,\"unit_price\":75},{\"product_id\":4,\"quantity\":2,\"unit_price\":20}],\"total_amount\":115}",
+      "processing_status": "PROCESSED",
+      "created_at": "NOW(",
+      "id": 7,
+      "updated_at": "2026-11-19T04:03:24.018Z",
+      "processed_at": "2026-11-19T04:03:24.018Z"
+    },
+    {
+      "source_system": "CANTEEN_POS",
+      "event_type": "SALE_COMPLETED",
+      "reference_id": "TXN-DUP-1795061004019",
+      "idempotency_key": "IDEMP-STRICT-1795061004019",
+      "payload": "{\"transaction_id\":\"TXN-DUP-1795061004019\",\"cashier_employee_id\":\"EMP-004\",\"idempotency_key\":\"IDEMP-STRICT-1795061004019\",\"items\":[{\"product_id\":1,\"quantity\":1,\"unit_price\":75}]}",
+      "processing_status": "PROCESSED",
+      "created_at": "NOW(",
+      "id": 8,
+      "updated_at": "2026-11-19T04:03:24.025Z",
+      "processed_at": "2026-11-19T04:03:24.025Z"
+    }
+  ],
+  "system_settings": [
+    {
+      "id": 1,
+      "setting_name": "COMPANY_NAME",
+      "setting_value": "Apex Enterprise Canteen & IMS",
+      "description": "Organization trading name",
+      "created_at": "2026-11-19T03:30:14.871Z"
+    },
+    {
+      "id": 2,
+      "setting_name": "VALUATION_METHOD",
+      "setting_value": "WEIGHTED_AVERAGE_COST",
+      "description": "Default financial inventory valuation algorithm",
+      "created_at": "2026-11-19T03:30:14.871Z"
+    },
+    {
+      "id": 3,
+      "setting_name": "FEFO_ENFORCEMENT",
+      "setting_value": true,
+      "description": "Automatically deduct from earliest expiring batches first",
+      "created_at": "2026-11-19T03:30:14.871Z"
+    },
+    {
+      "id": 4,
+      "setting_name": "EXPIRATION_ALERT_DAYS",
+      "setting_value": "30,15,7,3",
+      "description": "Comma separated thresholds for expiration warning notifications",
+      "created_at": "2026-11-19T03:30:14.871Z"
+    },
+    {
+      "id": 5,
+      "setting_name": "AUTO_DEACTIVATE_SYNC",
+      "setting_value": true,
+      "description": "Instantly block IMS access when employee is deactivated in EMS",
+      "created_at": "2026-11-19T03:30:14.871Z"
+    },
+    {
+      "id": 6,
+      "setting_name": "ALLOW_NEGATIVE_STOCK",
+      "setting_value": false,
+      "description": "Strictly prevent stock-out or sales when stock reaches zero",
+      "created_at": "2026-11-19T03:30:14.871Z"
+    }
+  ]
+}
