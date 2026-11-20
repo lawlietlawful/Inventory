@@ -78,46 +78,26 @@
                         <i class="bi bi-truck me-1 text-info"></i> Suppliers
                     </a>
                 </li>
-
-                <!-- Cross-system link to Canteen POS -->
-                <li class="nav-item ms-lg-2 d-flex align-items-center">
-                    <a href="http://127.0.0.1:8000" target="_blank" class="btn btn-outline-light btn-sm py-1 px-2.5 d-flex align-items-center gap-1.5" style="font-size: 0.78rem; border-color: rgba(255,255,255,0.25);">
-                        <i class="bi bi-cart3 text-success"></i> Open Canteen POS (Port 8000) &rarr;
-                    </a>
-                </li>
             </ul>
 
             <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0 flex-wrap">
                 <!-- User Profile Badge -->
                 <div class="cashier-badge d-flex align-items-center gap-2">
-                    @if (method_exists(Auth::user(), 'isInventoryUser') && Auth::user()->isInventoryUser())
-                        <span class="d-inline-flex align-items-center justify-content-center bg-info text-dark rounded-circle" style="width: 24px; height: 24px; font-size: 0.75rem;">
-                            <i class="bi bi-box-seam"></i>
-                        </span>
-                        <div class="d-flex flex-column text-start lh-1">
-                            <div class="d-flex align-items-center gap-1">
-                                <span class="fw-semibold small text-white">{{ Auth::user()->name }}</span>
-                                <span class="badge bg-info-subtle text-info" style="font-size: 0.6rem;">INVENTORY</span>
-                            </div>
-                            <span style="font-size: 0.68rem; color: #94a3b8;">{{ Auth::user()->idno }} &bull; {{ ucfirst(Auth::user()->role) }}</span>
+                    <span class="d-inline-flex align-items-center justify-content-center bg-info text-dark rounded-circle" style="width: 24px; height: 24px; font-size: 0.75rem;">
+                        <i class="bi bi-box-seam"></i>
+                    </span>
+                    <div class="d-flex flex-column text-start lh-1">
+                        <div class="d-flex align-items-center gap-1">
+                            <span class="fw-semibold small text-white">{{ Auth::user()->name }}</span>
+                            <span class="badge bg-info-subtle text-info" style="font-size: 0.6rem;">INVENTORY</span>
                         </div>
-                    @else
-                        <span class="d-inline-flex align-items-center justify-content-center bg-success text-white rounded-circle" style="width: 24px; height: 24px; font-size: 0.75rem;">
-                            <i class="bi bi-cart3"></i>
-                        </span>
-                        <div class="d-flex flex-column text-start lh-1">
-                            <div class="d-flex align-items-center gap-1">
-                                <span class="fw-semibold small text-white">{{ Auth::user()->name }}</span>
-                                <span class="badge bg-success-subtle text-success" style="font-size: 0.6rem;">CANTEEN (VIEWER)</span>
-                            </div>
-                            <span style="font-size: 0.68rem; color: #94a3b8;">{{ Auth::user()->idno }} &bull; {{ ucfirst(Auth::user()->role) }}</span>
-                        </div>
-                    @endif
+                        <span style="font-size: 0.68rem; color: #94a3b8;">{{ Auth::user()->idno }} &bull; {{ ucfirst(Auth::user()->role) }}</span>
+                    </div>
                 </div>
 
                 <!-- 1-Click Role Switcher Modal Button -->
-                <button type="button" class="btn btn-outline-light btn-sm py-1 px-2 d-flex align-items-center gap-1" data-bs-toggle="modal" data-bs-target="#switchUserModal" title="Switch User / Role" style="font-size: 0.75rem; border-color: rgba(255,255,255,0.25);">
-                    <i class="bi bi-arrow-repeat"></i> Switch
+                <button type="button" class="btn btn-outline-light btn-sm py-1 px-2 d-flex align-items-center gap-1" data-bs-toggle="modal" data-bs-target="#switchUserModal" title="Switch Inventory Member" style="font-size: 0.75rem; border-color: rgba(255,255,255,0.25);">
+                    <i class="bi bi-arrow-repeat"></i> Switch Member
                 </button>
 
                 <form method="POST" action="{{ route('logout') }}" class="d-inline ms-1">
@@ -133,49 +113,28 @@
 
 <!-- Switch User Modal -->
 <div class="modal fade" id="switchUserModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" style="max-width: 480px;">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 440px;">
         <div class="modal-content shadow border-0">
             <div class="modal-header border-bottom py-2.5 px-3">
-                <h6 class="modal-title fw-bold text-dark mb-0">Switch Active Team Member</h6>
+                <h6 class="modal-title fw-bold text-dark mb-0">Switch Inventory Team Member</h6>
                 <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body p-3">
-                <div class="mb-3">
-                    <span class="text-uppercase small fw-bold text-muted" style="font-size: 0.7rem;">Group 2 &bull; Inventory Management System</span>
-                    <div class="list-group list-group-flush mt-1 border rounded">
-                        @foreach (\App\Models\InventoryUser::where('is_active', true)->where('username', '!=', 'canteen_system')->get() as $iu)
-                            <form method="POST" action="{{ route('login.quick') }}" class="m-0">
-                                @csrf
-                                <input type="hidden" name="username" value="{{ $iu->username }}">
-                                <button type="submit" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-2 px-3 border-0 border-bottom {{ Auth::user()->username === $iu->username ? 'bg-light fw-bold' : '' }}">
-                                    <div>
-                                        <div class="small text-dark">{{ $iu->name }}</div>
-                                        <small class="text-muted font-monospace" style="font-size: 0.68rem;">{{ $iu->username }}</small>
-                                    </div>
-                                    <span class="badge bg-info-subtle text-info small">{{ ucfirst($iu->role) }}</span>
-                                </button>
-                            </form>
-                        @endforeach
-                    </div>
-                </div>
-
-                <div>
-                    <span class="text-uppercase small fw-bold text-muted" style="font-size: 0.7rem;">Group 3 &bull; Canteen Management System</span>
-                    <div class="list-group list-group-flush mt-1 border rounded">
-                        @foreach (\App\Models\User::where('is_active', true)->get() as $cu)
-                            <form method="POST" action="{{ route('login.quick') }}" class="m-0">
-                                @csrf
-                                <input type="hidden" name="username" value="{{ $cu->username }}">
-                                <button type="submit" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-2 px-3 border-0 border-bottom {{ Auth::user()->username === $cu->username ? 'bg-light fw-bold' : '' }}">
-                                    <div>
-                                        <div class="small text-dark">{{ $cu->name }}</div>
-                                        <small class="text-muted font-monospace" style="font-size: 0.68rem;">{{ $cu->username }}</small>
-                                    </div>
-                                    <span class="badge bg-success-subtle text-success small">{{ ucfirst($cu->role) }}</span>
-                                </button>
-                            </form>
-                        @endforeach
-                    </div>
+                <span class="text-uppercase small fw-bold text-muted mb-2 d-block" style="font-size: 0.7rem;">Group 2 &bull; Inventory Management System</span>
+                <div class="list-group list-group-flush border rounded">
+                    @foreach (\App\Models\InventoryUser::where('is_active', true)->where('username', '!=', 'canteen_system')->get() as $iu)
+                        <form method="POST" action="{{ route('login.quick') }}" class="m-0">
+                            @csrf
+                            <input type="hidden" name="username" value="{{ $iu->username }}">
+                            <button type="submit" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-2 px-3 border-0 border-bottom {{ Auth::user()->username === $iu->username ? 'bg-light fw-bold' : '' }}">
+                                <div>
+                                    <div class="small text-dark">{{ $iu->name }}</div>
+                                    <small class="text-muted font-monospace" style="font-size: 0.68rem;">{{ $iu->username }}</small>
+                                </div>
+                                <span class="badge bg-info-subtle text-info small">{{ ucfirst($iu->role) }}</span>
+                            </button>
+                        </form>
+                    @endforeach
                 </div>
             </div>
             <div class="modal-footer border-top p-2 bg-light">

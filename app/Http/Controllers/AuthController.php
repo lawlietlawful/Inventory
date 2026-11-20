@@ -21,21 +21,17 @@ class AuthController extends Controller
     public function showLogin(): View|RedirectResponse
     {
         if (Auth::check()) {
-            if (method_exists(Auth::user(), 'isInventoryUser') && Auth::user()->isInventoryUser()) {
-                return redirect()->route('inventory.dashboard');
-            }
-            return redirect()->route('pos');
+            return redirect()->route('inventory.dashboard');
         }
 
-        // Pass sample accounts for easy evaluation
-        $canteenUsers = User::where('is_active', true)->orderBy('id')->get();
+        // Pass Group 2 inventory accounts for warehouse evaluation
         $inventoryUsers = InventoryUser::where('is_active', true)->where('username', '!=', 'canteen_system')->orderBy('id')->get();
 
-        return view('auth.login', compact('canteenUsers', 'inventoryUsers'));
+        return view('auth.login', compact('inventoryUsers'));
     }
 
     /**
-     * Handle authentication with rate-limiting across Canteen and Inventory teams
+     * Handle authentication for Inventory Warehouse Staff
      */
     public function login(Request $request): RedirectResponse
     {
@@ -56,20 +52,26 @@ class AuthController extends Controller
                 ]);
         }
 
-        // Attempt login (checks canteen.users then inventory.users)
+        // Attempt login
         if (Auth::attempt($request->only('username', 'password'))) {
+            // Guard: Disallow Canteen users on Inventory System
+            if (!method_exists(Auth::user(), 'isInventoryUser') || !Auth::user()->isInventoryUser()) {
+                Auth::logout();
+                return back()
+                    ->withInput($request->only('username'))
+                    ->withErrors([
+                        'username' => 'Access denied. Canteen cashiers must sign in at the Canteen POS System on port 8000.',
+                    ]);
+            }
+
             RateLimiter::clear($throttleKey);
             $request->session()->regenerate();
 
             // Record last login
             Auth::user()->update(['last_login_at' => now()]);
 
-            $isInventory = method_exists(Auth::user(), 'isInventoryUser') && Auth::user()->isInventoryUser();
-            $targetRoute = route('inventory.dashboard');
-            $deptLabel = $isInventory ? 'Inventory Management System (Warehouse)' : 'Inventory System (Viewer Mode)';
-
-            return redirect()->intended($targetRoute)
-                ->with('success', "Welcome to {$deptLabel}, " . Auth::user()->name . "!");
+            return redirect()->intended(route('inventory.dashboard'))
+                ->with('success', "Welcome to Inventory Dawn, " . Auth::user()->name . "!");
         }
 
         RateLimiter::hit($throttleKey, 60);
@@ -88,16 +90,7 @@ class AuthController extends Controller
     {
         $username = $request->input('username');
 
-        // Check Canteen Users
-        $canteen = User::where('username', $username)->first();
-        if ($canteen) {
-            session(['auth_system' => 'canteen']);
-            Auth::login($canteen);
-            $request->session()->regenerate();
-            return redirect()->route('inventory.dashboard')->with('info', "Logged in as {$canteen->name} (Canteen Staff). Point of Sale terminal is at http://127.0.0.1:8000.");
-        }
-
-        // Check Inventory Users
+        // Check Inventory Users only
         $inv = InventoryUser::where('username', $username)->first();
         if ($inv) {
             session(['auth_system' => 'inventory']);
@@ -106,7 +99,7 @@ class AuthController extends Controller
             return redirect()->route('inventory.dashboard')->with('success', "Active session: {$inv->name} (Inventory System)");
         }
 
-        return redirect()->route('login')->with('error', 'Specified user could not be found.');
+        return redirect()->route('login')->with('error', 'Only Inventory Management team members can sign in to this system.');
     }
 
     /**

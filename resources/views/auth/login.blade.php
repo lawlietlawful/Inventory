@@ -118,69 +118,25 @@
         <!-- Quick 1-Click Evaluation Switcher -->
         <div class="pt-3 border-top">
             <div class="d-flex justify-content-between align-items-center mb-2">
-                <span class="small fw-bold text-dark text-uppercase" style="font-size: 0.72rem; letter-spacing: 0.04em;">1-Click Role Logins:</span>
-                <span class="badge bg-light text-secondary border small">Group Rosters</span>
+                <span class="small fw-bold text-dark text-uppercase" style="font-size: 0.72rem; letter-spacing: 0.04em;">1-Click Member Logins:</span>
+                <span class="badge bg-info-subtle text-info border small">Group 2 Roster</span>
             </div>
 
-            <!-- Tab pills -->
-            <ul class="nav nav-pills nav-fill mb-2" id="roleTabs" role="tablist" style="font-size: 0.78rem;">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active py-1 px-2" id="inventory-tab" data-bs-toggle="pill" data-bs-target="#inventory-pills" type="button" role="tab">
-                        <i class="bi bi-box-seam me-1"></i> Inventory (Group 2)
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link py-1 px-2" id="canteen-tab" data-bs-toggle="pill" data-bs-target="#canteen-pills" type="button" role="tab">
-                        <i class="bi bi-cart3 me-1"></i> Canteen (Group 3)
-                    </button>
-                </li>
-            </ul>
-
-            <div class="tab-content" id="roleTabsContent">
-                <!-- Inventory Group -->
-                <div class="tab-pane fade show active" id="inventory-pills" role="tabpanel">
-                    <div class="d-flex flex-column gap-1.5" style="max-height: 170px; overflow-y: auto;">
-                        @foreach (\App\Models\InventoryUser::where('is_active', true)->where('username', '!=', 'canteen_system')->orderBy('id')->get() as $iu)
-                            <form method="POST" action="{{ route('login.quick') }}" class="d-inline m-0">
-                                @csrf
-                                <input type="hidden" name="username" value="{{ $iu->username }}">
-                                <button type="submit" class="account-chip w-100 text-start p-2 rounded d-flex justify-content-between align-items-center text-dark text-decoration-none">
-                                    <div>
-                                        <div class="fw-semibold small lh-1 text-dark">{{ $iu->name }}</div>
-                                        <small class="text-muted font-monospace" style="font-size: 0.7rem;">user: {{ $iu->username }}</small>
-                                    </div>
-                                    <span class="badge bg-info-subtle text-info small" style="font-size: 0.65rem;">{{ ucfirst($iu->role) }} &rarr;</span>
-                                </button>
-                            </form>
-                        @endforeach
-                    </div>
-                </div>
-
-                <!-- Canteen Group -->
-                <div class="tab-pane fade" id="canteen-pills" role="tabpanel">
-                    <div class="d-flex flex-column gap-1.5" style="max-height: 170px; overflow-y: auto;">
-                        @foreach (\App\Models\User::where('is_active', true)->orderBy('id')->get() as $cu)
-                            <form method="POST" action="{{ route('login.quick') }}" class="d-inline m-0">
-                                @csrf
-                                <input type="hidden" name="username" value="{{ $cu->username }}">
-                                <button type="submit" class="account-chip w-100 text-start p-2 rounded d-flex justify-content-between align-items-center text-dark text-decoration-none">
-                                    <div>
-                                        <div class="fw-semibold small lh-1 text-dark">{{ $cu->name }}</div>
-                                        <small class="text-muted font-monospace" style="font-size: 0.7rem;">user: {{ $cu->username }}</small>
-                                    </div>
-                                    <span class="badge bg-success-subtle text-success small" style="font-size: 0.65rem;">{{ ucfirst($cu->role) }} &rarr;</span>
-                                </button>
-                            </form>
-                        @endforeach
-                    </div>
-                </div>
+            <div class="d-flex flex-column gap-1.5" style="max-height: 220px; overflow-y: auto;">
+                @foreach (\App\Models\InventoryUser::where('is_active', true)->where('username', '!=', 'canteen_system')->orderBy('id')->get() as $iu)
+                    <form method="POST" action="{{ route('login.quick') }}" class="d-inline m-0">
+                        @csrf
+                        <input type="hidden" name="username" value="{{ $iu->username }}">
+                        <button type="submit" class="account-chip w-100 text-start p-2 rounded d-flex justify-content-between align-items-center text-dark text-decoration-none">
+                            <div>
+                                <div class="fw-semibold small lh-1 text-dark">{{ $iu->name }}</div>
+                                <small class="text-muted font-monospace" style="font-size: 0.7rem;">user: {{ $iu->username }}</small>
+                            </div>
+                            <span class="badge bg-info-subtle text-info small" style="font-size: 0.65rem;">{{ ucfirst($iu->role) }} &rarr;</span>
+                        </button>
+                    </form>
+                @endforeach
             </div>
-        </div>
-
-        <div class="mt-3 pt-2 border-top text-center">
-            <a href="http://127.0.0.1:8000" target="_blank" class="text-muted small text-decoration-none">
-                <i class="bi bi-cart3 me-1 text-success"></i> Looking for Canteen POS? Open Port 8000 &rarr;
-            </a>
         </div>
     </div>
 </div>
