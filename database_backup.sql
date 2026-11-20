@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict 3x1DJdXZqqW6fQenB72JcABeQSF0PcoUkAQ5coo2vM6eKTfaOCHnhpfhGoqd7gg
+\restrict p0AAgwOi7oLT1LzJfkjAlWdKPHdrdjQCGu40oNBfNKjbXYoLGZtg3ONE4yyodvz
 
 -- Dumped from database version 18.6
 -- Dumped by pg_dump version 18.6
@@ -1020,9 +1020,9 @@ COPY canteen.menu_items (id, category_id, product_id, name, description, price, 
 3	1	4	Chicken Adobo with Rice	\N	55.00	t	2026-11-13 14:08:37.528128	2026-11-13 14:08:37.528128
 4	1	5	Pork Sinigang with Rice	\N	80.00	t	2026-11-19 11:14:04.970631	2026-11-19 11:14:04.970631
 5	1	6	Beef Caldereta with Rice	\N	95.00	t	2026-11-19 11:14:04.971763	2026-11-19 11:14:04.971763
-6	3	7	Cheesy Lumpiang Shanghai (5 pcs)	\N	35.00	t	2026-11-19 11:14:04.972193	2026-11-19 11:14:04.972193
 7	2	8	House Blend Iced Tea (16 oz)	\N	20.00	t	2026-11-19 11:14:04.972629	2026-11-19 11:14:04.972629
 8	4	9	Special Halo-Halo	\N	50.00	t	2026-11-19 11:14:04.973039	2026-11-19 11:14:04.973039
+6	3	7	Cheesy Lumpiang Shanghai (5 pcs)	\N	35.00	t	2026-11-19 11:14:04.972193	2026-11-20 15:05:06
 \.
 
 
@@ -1033,6 +1033,9 @@ COPY canteen.menu_items (id, category_id, product_id, name, description, price, 
 COPY canteen.payments (id, sale_id, method, amount_tendered, change_given, reference_no, paid_at, created_at, updated_at) FROM stdin;
 1	1	cash	100.00	70.00	\N	2026-11-19 11:19:28	2026-11-19 11:19:28	2026-11-19 11:19:28
 2	2	cash	50.00	10.00	\N	2026-11-20 14:56:14	2026-11-20 14:56:14	2026-11-20 14:56:14
+3	3	cash	455.00	0.00	\N	2026-11-20 15:04:06	2026-11-20 15:04:06	2026-11-20 15:04:06
+4	4	cash	100.00	15.00	\N	2026-11-20 15:10:43	2026-11-20 15:10:43	2026-11-20 15:10:43
+5	5	cash	1950.00	1000.00	\N	2026-11-20 15:25:57	2026-11-20 15:25:57	2026-11-20 15:25:57
 \.
 
 
@@ -1043,6 +1046,10 @@ COPY canteen.payments (id, sale_id, method, amount_tendered, change_given, refer
 COPY canteen.sale_items (id, sale_id, menu_item_id, item_name, unit_price, quantity, created_at, updated_at) FROM stdin;
 1	1	1	Bottled Water 500ml	15.00	2	2026-11-19 11:19:28	2026-11-19 11:19:28
 2	2	2	Chips	20.00	2	2026-11-20 14:56:14	2026-11-20 14:56:14
+3	3	6	Cheesy Lumpiang Shanghai (5 pcs)	35.00	13	2026-11-20 15:04:06	2026-11-20 15:04:06
+4	4	1	Bottled Water 500ml	15.00	3	2026-11-20 15:10:43	2026-11-20 15:10:43
+5	4	2	Chips	20.00	2	2026-11-20 15:10:43	2026-11-20 15:10:43
+6	5	5	Beef Caldereta with Rice	95.00	10	2026-11-20 15:25:57	2026-11-20 15:25:57
 \.
 
 
@@ -1053,6 +1060,9 @@ COPY canteen.sale_items (id, sale_id, menu_item_id, item_name, unit_price, quant
 COPY canteen.sales (id, receipt_no, shift_id, cashier_id, order_type, subtotal, discount, status, notes, sold_at, voided_by, voided_at, void_reason, created_at, updated_at) FROM stdin;
 1	RCP-20261119-0001	1	1	dine_in	30.00	0.00	voided	Test Student	2026-11-19 11:19:28	1	2026-11-19 11:19:28	Cashier Void & Refund	2026-11-19 11:19:28	2026-11-19 11:19:28
 2	RCP-20261120-0001	2	12	dine_in	40.00	0.00	completed	Test Student	2026-11-20 14:56:14	\N	\N	\N	2026-11-20 14:56:14	2026-11-20 14:56:14
+3	RCP-20261120-0002	1	1	dine_in	455.00	0.00	completed	Walk-in Customer	2026-11-20 15:04:06	\N	\N	\N	2026-11-20 15:04:06	2026-11-20 15:04:06
+4	RCP-20261120-0003	2	12	dine_in	85.00	0.00	completed	Test Customer — Flow Demo	2026-11-20 15:10:43	\N	\N	\N	2026-11-20 15:10:43	2026-11-20 15:10:43
+5	RCP-20261120-0004	1	1	dine_in	950.00	0.00	completed	Walk-in Customer	2026-11-20 15:25:57	\N	\N	\N	2026-11-20 15:25:57	2026-11-20 15:25:57
 \.
 
 
@@ -1203,13 +1213,13 @@ COPY inventory.categories (id, name, description, created_at, updated_at) FROM s
 
 COPY inventory.products (id, sku, barcode, name, description, category_id, supplier_id, unit, cost_price, selling_price, quantity_on_hand, reorder_level, status, created_at, updated_at) FROM stdin;
 7	SNK-002	\N	Cheesy Lumpiang Shanghai (5 pcs)	\N	2	3	pc	22.00	35.00	40	10	active	2026-11-19 11:14:04.96349	2026-11-20 14:05:25
-1	BEV-001	\N	Bottled Water 500ml	\N	1	4	bottle	10.00	15.00	50	10	active	2026-11-13 14:05:05.789571	2026-11-20 14:05:25
 8	BEV-002	\N	House Blend Iced Tea (16 oz)	\N	1	4	pc	10.00	20.00	50	10	active	2026-11-19 11:14:04.963892	2026-11-20 14:05:25
 4	MEL-001	\N	Chicken Adobo with Rice	\N	4	1	pc	45.00	55.00	35	10	active	2026-11-19 11:14:04.957862	2026-11-20 14:05:25
-5	MEL-002	\N	Pork Sinigang with Rice	\N	4	1	pc	60.00	80.00	25	10	active	2026-11-19 11:14:04.962669	2026-11-20 14:05:25
-6	MEL-003	\N	Beef Caldereta with Rice	\N	4	1	pc	75.00	95.00	20	10	active	2026-11-19 11:14:04.963086	2026-11-20 14:05:25
 9	DES-001	\N	Special Halo-Halo	\N	5	5	pc	35.00	50.00	25	10	active	2026-11-19 11:14:04.964248	2026-11-20 14:05:25
-2	SNK-001	\N	Chips	\N	2	2	pack	12.00	20.00	38	10	active	2026-11-13 14:05:05.789571	2026-11-20 14:56:14
+6	MEL-003	\N	Beef Caldereta with Rice	\N	4	1	pc	75.00	95.00	7	10	active	2026-11-19 11:14:04.963086	2026-11-20 15:04:06
+1	BEV-001	\N	Bottled Water 500ml	\N	1	4	bottle	10.00	15.00	47	10	active	2026-11-13 14:05:05.789571	2026-11-20 15:10:43
+2	SNK-001	\N	Chips	\N	2	2	pack	12.00	20.00	36	10	active	2026-11-13 14:05:05.789571	2026-11-20 15:10:43
+5	MEL-002	\N	Pork Sinigang with Rice	\N	4	1	pc	60.00	80.00	15	10	active	2026-11-19 11:14:04.962669	2026-11-20 15:25:57
 \.
 
 
@@ -1241,6 +1251,10 @@ COPY inventory.stock_movements (id, product_id, movement_type, quantity, referen
 3	1	in	2	canteen_sale_void	1	Voided Sale #RCP-20261119-0001	1	2026-11-19 11:19:28
 4	2	out	-2	canteen_sale	2	POS Sale #RCP-20261120-0001	1	2026-11-20 14:56:14
 5	2	in	10	purchase_order	999	Received PO #PO-TEST-001	2	2026-11-20 14:56:14
+6	6	out	-13	canteen_sale	3	POS Sale #RCP-20261120-0002	1	2026-11-20 15:04:06
+7	1	out	-3	canteen_sale	4	POS Sale #RCP-20261120-0003	1	2026-11-20 15:10:43
+8	2	out	-2	canteen_sale	4	POS Sale #RCP-20261120-0003	1	2026-11-20 15:10:43
+9	5	out	-10	canteen_sale	5	POS Sale #RCP-20261120-0004	1	2026-11-20 15:25:57
 \.
 
 
@@ -1289,21 +1303,21 @@ SELECT pg_catalog.setval('canteen.menu_items_id_seq', 8, true);
 -- Name: payments_id_seq; Type: SEQUENCE SET; Schema: canteen; Owner: canteen_user
 --
 
-SELECT pg_catalog.setval('canteen.payments_id_seq', 2, true);
+SELECT pg_catalog.setval('canteen.payments_id_seq', 5, true);
 
 
 --
 -- Name: sale_items_id_seq; Type: SEQUENCE SET; Schema: canteen; Owner: canteen_user
 --
 
-SELECT pg_catalog.setval('canteen.sale_items_id_seq', 2, true);
+SELECT pg_catalog.setval('canteen.sale_items_id_seq', 6, true);
 
 
 --
 -- Name: sales_id_seq; Type: SEQUENCE SET; Schema: canteen; Owner: canteen_user
 --
 
-SELECT pg_catalog.setval('canteen.sales_id_seq', 2, true);
+SELECT pg_catalog.setval('canteen.sales_id_seq', 5, true);
 
 
 --
@@ -1415,7 +1429,7 @@ SELECT pg_catalog.setval('inventory.purchase_orders_id_seq', 1, true);
 -- Name: stock_movements_id_seq; Type: SEQUENCE SET; Schema: inventory; Owner: inventory_user
 --
 
-SELECT pg_catalog.setval('inventory.stock_movements_id_seq', 5, true);
+SELECT pg_catalog.setval('inventory.stock_movements_id_seq', 9, true);
 
 
 --
@@ -2237,5 +2251,5 @@ ALTER DEFAULT PRIVILEGES FOR ROLE inventory_user IN SCHEMA inventory GRANT SELEC
 -- PostgreSQL database dump complete
 --
 
-\unrestrict 3x1DJdXZqqW6fQenB72JcABeQSF0PcoUkAQ5coo2vM6eKTfaOCHnhpfhGoqd7gg
+\unrestrict p0AAgwOi7oLT1LzJfkjAlWdKPHdrdjQCGu40oNBfNKjbXYoLGZtg3ONE4yyodvz
 
